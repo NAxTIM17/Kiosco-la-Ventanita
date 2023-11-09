@@ -1,11 +1,15 @@
+import React, { useState } from 'react';
+import './App.css'
 
-function App() {
- 
-  return (
+
+const App = () => {
+  return(
     <>
-      <h1>Kiosco la ventanita</h1>
+      <h1>:dolar:</h1>
     </>
   )
-}
+ 
 
-export default App
+  
+}
+export default App;
