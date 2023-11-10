@@ -26,6 +26,7 @@ function SideBar(){
                   <Button className="navBar-button" color="primary" variant="shadow"><Link to = "/">Home</Link></Button>
                   <Button className="navBar-button" color="primary" variant="shadow"><Link to = "/sales">Go to sales</Link></Button>
                   <Button className="navBar-button" color="primary" variant="shadow" ><Link to = "/purchases">Go to purchases</Link></Button>
+                  <Button className="navBar-button" color="primary" variant="shadow" ><Link to = "/inventory">Inventory</Link></Button>
                 </div>
                   <Button className="navBar-button" color="danger" variant="shadow" startContent = {<UserIcon/>} >Log Out</Button>
               </div>
