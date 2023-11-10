@@ -7,7 +7,9 @@ const App = () => {
   return(
     <> <div className="containerDiv">
       <SideBar/>
-      <BusinessRouter/>
+      <div className="Container-BusinessRouter">
+        <BusinessRouter/>
+      </div>
     </div>
     </>
   )

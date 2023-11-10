@@ -1,6 +1,7 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import './SideBar.css'
+import UserIcon from "../iconUser";
 
 function SideBar(){
 
@@ -22,11 +23,11 @@ function SideBar(){
               </div>
               <div className="navBar-buttons">  
                 <div className="navBar-buttons-pages">
-                  <Button className="navBar-button" color="primary"><Link to = "/sales">Go to sales</Link></Button>
-                  <Button className="navBar-button" color="primary"><Link to = "/purchases">Go to purchases</Link></Button>
-                  <Button className="navBar-button" color="primary"><Link to = "/">Home</Link></Button>
+                  <Button className="navBar-button" color="primary" variant="shadow"><Link to = "/">Home</Link></Button>
+                  <Button className="navBar-button" color="primary" variant="shadow"><Link to = "/sales">Go to sales</Link></Button>
+                  <Button className="navBar-button" color="primary" variant="shadow" ><Link to = "/purchases">Go to purchases</Link></Button>
                 </div>
-                  <Button className="navBar-button" color="danger">Log Out</Button>
+                  <Button className="navBar-button" color="danger" variant="shadow" startContent = {<UserIcon/>} >Log Out</Button>
               </div>
             </div>
         </>

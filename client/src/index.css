@@ -2,7 +2,6 @@ body{
   display: flex;
   flex-direction: row;
   margin: 0;
-  background-color: var(--brand-fourth-color);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 :root{
