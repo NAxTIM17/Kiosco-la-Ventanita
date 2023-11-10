@@ -5,10 +5,10 @@ import SideBar from './Components/Sidebar';
 
 const App = () => {
   return(
-    <>
-      <h1>midiu</h1>
+    <> <div className="containerDiv">
       <SideBar/>
       <BusinessRouter/>
+    </div>
     </>
   )
  

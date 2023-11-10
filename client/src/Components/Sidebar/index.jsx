@@ -1,39 +1,34 @@
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from "@nextui-org/react";
+import { Link } from "react-router-dom";
+import './SideBar.css'
 
 function SideBar(){
+
+  const AcmeLogo = () => (
+    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
+      <path
+        clipRule="evenodd"
+        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
+    </svg>
+  )
     return(
         <>
-
-        <Card className="max-w-[400px]">
-      <CardHeader className="flex gap-3">
-        <Image
-          alt="nextui logo"
-          height={40}
-          radius="sm"
-          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-          width={40}
-        />
-        <div className="flex flex-col">
-          <p className="text-md">NextUI</p>
-          <p className="text-small text-default-500">nextui.org</p>
-        </div>
-      </CardHeader>
-      <Divider/>
-      <CardBody>
-        <p>Make beautiful websites regardless of your design experience.</p>
-      </CardBody>
-      <Divider/>
-      <CardFooter>
-        <Link
-          isExternal
-          showAnchorIcon
-          href="https://github.com/nextui-org/nextui"
-        >
-          Visit source code on GitHub.
-        </Link>
-      </CardFooter>
-    </Card>
-
+            <div className="navBar">
+              <div className="navBar-Title">
+                <h1>Side Bar</h1>
+              </div>
+              <div className="navBar-buttons">  
+                <div className="navBar-buttons-pages">
+                  <Button className="navBar-button" color="primary"><Link to = "/sales">Go to sales</Link></Button>
+                  <Button className="navBar-button" color="primary"><Link to = "/purchases">Go to purchases</Link></Button>
+                  <Button className="navBar-button" color="primary"><Link to = "/">Home</Link></Button>
+                </div>
+                  <Button className="navBar-button" color="danger">Log Out</Button>
+              </div>
+            </div>
         </>
     )
 }

@@ -7,3 +7,6 @@
 .Layout_Container{
   height: 100vh;
 }
+.containerDiv{
+  display: flex;
+}
