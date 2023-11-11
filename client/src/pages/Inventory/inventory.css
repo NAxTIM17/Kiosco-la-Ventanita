@@ -3,11 +3,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 70%;
 }
 .inventory-table{
-    height: 100px;
-    width: 100px;
     background-color: var(--brand-color-dark);
 
+}
+.Title{
+    text-align: center;
+    font-size: 50px;
 }
