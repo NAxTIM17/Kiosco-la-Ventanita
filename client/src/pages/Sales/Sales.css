@@ -1,21 +1,21 @@
 
 .Sales{
-    padding: 15px;
+    padding: 10px;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 750px;
+    height: 700px;
     flex-wrap: wrap;
 }
 .Sales-container{
     display: flex;
     flex-direction: row;
-    height: 600px;
     flex: 1 1 100%;
     padding: 5px;
     gap: 100px;
     flex-wrap: nowrap;
+    align-items: center;
 }
 .Sales-items{
     display: flex;
@@ -81,4 +81,13 @@
     text-align: center;
     font-size: 50px;
     margin: 0;
+}
+.Sales-item-card{
+    overflow: scroll !important;
+    overflow-x: hidden !important;
+    max-height: 300px;
+}
+.Sales-Card{
+    gap: 10px;
+    margin-bottom:10px ;
 }

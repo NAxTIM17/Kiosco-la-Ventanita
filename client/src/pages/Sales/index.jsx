@@ -27,7 +27,8 @@ function Sales (){
                 <div className="Sales-items">
                     <SearchInput/>
                     <Divider/>
-                    <Card>
+                <div className="Sales-item-card">
+                    <Card className="Sales-Card">
                         <CardBody>
                             <div className="CardBody">
                                 <div className="CardButtons">
@@ -50,6 +51,126 @@ function Sales (){
                             </div>
                         </CardBody>
                     </Card>
+                    <Card className="Sales-Card">
+                        <CardBody>
+                            <div className="CardBody">
+                                <div className="CardButtons">
+                                    <Button color="default" onClick={handleClickAdd}>
+                                        +
+                                    </Button>
+                                        <div className="CardNumber">
+                                        {add}
+                                        </div>
+                                    <Button color="default" onClick={handleClickSub}>
+                                        -
+                                    </Button>
+                                </div>
+                                <div className="CardDivider">
+                                    <Divider orientation="vertical" />
+                                </div>
+                                <div className="CardProduct">
+                                    <h3>ProductoProductoProductoProductoProductoProducto</h3>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    <Card className="Sales-Card">
+                        <CardBody>
+                            <div className="CardBody">
+                                <div className="CardButtons">
+                                    <Button color="default" onClick={handleClickAdd}>
+                                        +
+                                    </Button>
+                                        <div className="CardNumber">
+                                        {add}
+                                        </div>
+                                    <Button color="default" onClick={handleClickSub}>
+                                        -
+                                    </Button>
+                                </div>
+                                <div className="CardDivider">
+                                    <Divider orientation="vertical" />
+                                </div>
+                                <div className="CardProduct">
+                                    <h3>ProductoProductoProductoProductoProductoProducto</h3>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    <Card className="Sales-Card">
+                        <CardBody>
+                            <div className="CardBody">
+                                <div className="CardButtons">
+                                    <Button color="default" onClick={handleClickAdd}>
+                                        +
+                                    </Button>
+                                        <div className="CardNumber">
+                                        {add}
+                                        </div>
+                                    <Button color="default" onClick={handleClickSub}>
+                                        -
+                                    </Button>
+                                </div>
+                                <div className="CardDivider">
+                                    <Divider orientation="vertical" />
+                                </div>
+                                <div className="CardProduct">
+                                    <h3>ProductoProductoProductoProductoProductoProducto</h3>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    <Card className="Sales-Card">
+                        <CardBody>
+                            <div className="CardBody">
+                                <div className="CardButtons">
+                                    <Button color="default" onClick={handleClickAdd}>
+                                        +
+                                    </Button>
+                                        <div className="CardNumber">
+                                        {add}
+                                        </div>
+                                    <Button color="default" onClick={handleClickSub}>
+                                        -
+                                    </Button>
+                                </div>
+                                <div className="CardDivider">
+                                    <Divider orientation="vertical" />
+                                </div>
+                                <div className="CardProduct">
+                                    <h3>ProductoProductoProductoProductoProductoProducto</h3>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    <Card className="Sales-Card">
+                        <CardBody>
+                            <div className="CardBody">
+                                <div className="CardButtons">
+                                    <Button color="default" onClick={handleClickAdd}>
+                                        +
+                                    </Button>
+                                        <div className="CardNumber">
+                                        {add}
+                                        </div>
+                                    <Button color="default" onClick={handleClickSub}>
+                                        -
+                                    </Button>
+                                </div>
+                                <div className="CardDivider">
+                                    <Divider orientation="vertical" />
+                                </div>
+                                <div className="CardProduct">
+                                    <h3>ProductoProductoProductoProductoProductoProducto</h3>
+                                </div>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    
+                    
+                    
+                </div>
+                    
                 </div>
                 <div className="Sales-amount">
                     <div className="SalesProducts">
