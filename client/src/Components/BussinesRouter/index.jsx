@@ -1,6 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 //Routes
 import Home from '../../pages/Home'
+import Sales from '../../pages/Sales'
 
 function BusinessRouter(){
 
@@ -8,7 +9,7 @@ function BusinessRouter(){
         <Routes>
             <Route path='login' element = {<h3>Where Login should GO</h3>}/>
             <Route path='/' element = {<Home />}/>
-            <Route path='sales' element = {<h3>Where Sales should GO</h3>}/>
+            <Route path='sales' element = {<Sales />}/>
             <Route path='purchases' element = {<h3>Where Supplier Purchases GO</h3>}/>
             <Route path='inventory' element = {<h3>Where Supplier Inventory should GO</h3>}/>
         </Routes>

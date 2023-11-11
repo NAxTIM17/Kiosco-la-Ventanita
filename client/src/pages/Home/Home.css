@@ -1,0 +1,30 @@
+.Container-Home{
+    background-color: var(--brand-base-color);
+    margin: 5px;
+    height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 10px;
+}
+.Container-Home-01{
+    background-color: var(--brand-second-color);
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+}
+.Container-Home-sub01{
+    background-color: var(--brand-fourth-color);
+    flex: 1 1 50%;
+}
+.Container-Home-sub02{
+    background-color: var(--brand-base-color);
+    flex: 1 1 30%;
+}
+.Container-Home-02{
+    background-color: var(--brand-third-color);
+    flex: 0 1 30%;
+}

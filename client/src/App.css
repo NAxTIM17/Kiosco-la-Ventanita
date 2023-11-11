@@ -9,6 +9,7 @@
 }
 .containerDiv{
   display: flex;
+  flex-direction: row;
 }
 .Container-BusinessRouter{
   padding: 2rem;
@@ -17,4 +18,8 @@
   width: 100%;
 
   background-color: var(--brand-fourth-color);
+}
+.SideBar-container{
+  display: flex;
+  flex-direction: column;
 }

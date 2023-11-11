@@ -1,0 +1,84 @@
+
+.Sales{
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 750px;
+    flex-wrap: wrap;
+}
+.Sales-container{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    flex: 1 1 100%;
+    padding: 5px;
+    gap: 100px;
+    flex-wrap: nowrap;
+}
+.Sales-items{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--brand-color-dark);
+    flex: 1 1 60%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.Sales-amount{
+    background-color: var(--brand-color-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 40%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.CardBody{
+    display: flex;
+    flex-direction: row;
+}
+.CardNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
+.CardButtons{
+    display: flex;
+    flex-direction: row;
+}
+.CardDivider{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.CardProduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SalesProducts{
+    color: var(--brand-color-darker);
+    font-size: x-large;
+}
+.CardPrice h1{
+    font-size: 100px;
+    text-align: center;
+}
+.CardPrice h2{
+    text-align: center;
+}
+.Table-table{
+    overflow: scroll !important;
+    height: 300px;
+    overflow-x: hidden !important;
+}
+.Sales-Title{
+    text-align: center;
+    font-size: 50px;
+    margin: 0;
+}

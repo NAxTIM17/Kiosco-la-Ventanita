@@ -1,4 +1,4 @@
-body{
+zbody{
   display: flex;
   flex-direction: row;
   margin: 0;
@@ -9,6 +9,9 @@ body{
   --brand-font: 'Product Sans';
   --brand-hue : 212;
 
+  --brand-color-dark : hsla(0, 0%, 69%, 0.288);
+  --brand-color-darker : hsl(0, 2%, 22%);
+  --brand-color-ligth : 	hsl(200, 18%, 97%);
   --brand-fourth-color: hsl(0, 0%, 93%);
   --brand-third-color: hsl(214, 65%, 35%);
   --brand-second-color: hsl(211, 70%, 26%);  
