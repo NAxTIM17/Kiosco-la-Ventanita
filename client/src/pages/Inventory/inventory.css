@@ -1,0 +1,13 @@
+.inventory-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.inventory-table{
+    height: 100px;
+    width: 100px;
+    background-color: var(--brand-color-dark);
+
+}
