@@ -38,29 +38,6 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
-.CardBody{
-    display: flex;
-    flex-direction: row;
-}
-.CardNumber{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-}
-.CardButtons{
-    display: flex;
-    flex-direction: row;
-}
-.CardDivider{
-    margin-left: 15px;
-    margin-right: 15px;
-}
-.CardProduct{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .SalesProducts{
     color: var(--brand-color-darker);
     font-size: x-large;
@@ -87,7 +64,4 @@
     overflow-x: hidden !important;
     max-height: 300px;
 }
-.Sales-Card{
-    gap: 10px;
-    margin-bottom:10px ;
-}
+

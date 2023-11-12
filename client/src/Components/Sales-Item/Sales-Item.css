@@ -1,0 +1,27 @@
+.Sales-Card{
+    gap: 10px;
+    margin-bottom:10px ;
+}
+.CardButtons{
+    display: flex;
+    flex-direction: row;
+}
+.CardBody{
+    display: flex;
+    flex-direction: row;
+}
+.CardDivider{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.CardProduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CardNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
