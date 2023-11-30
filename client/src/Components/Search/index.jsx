@@ -1,7 +1,12 @@
+import Productos from "../../Providers/Products";
+import {Input, Card, CardBody, Button} from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import './Search.css'
 
-import {Input} from "@nextui-org/react";
 
+//icono de la barra de busqueda
 export const SearchIcon = (props) => (
+
     <svg
       aria-hidden="true"
       fill="none"
@@ -30,9 +35,35 @@ export const SearchIcon = (props) => (
   );
   
 
-export default function SearchInput() {
+export default function SearchInput(props) {
+
+  
+
+  const [busqueda, setBusqueda] = useState('')
+  const [select, setSelected] = useState(null)
+  
+  props.func(Productos[select])
+
+  const handleFocus = (index) =>{
+      setSelected(index)
+  }
+
+  const handleBusquedaChange = (event) => {
+    setBusqueda(event.target.value)
+    
+
+  }
+  const filtrarElemento = () => {
+    return Productos.filter((productos) =>
+    productos.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+  }
+  
+  const agarrarProducto = (event) =>{
+    console.log(event.target.value)
+  }
   return (
-    <div className="w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
+      <>
+    <div className="w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white container-Search">
       <Input
         label="Search"
         isClearable
@@ -62,8 +93,31 @@ export default function SearchInput() {
         startContent={
           <SearchIcon className="text-black/50 mb-0.5 dark:text-black/90 text-slate-400 pointer-events-none flex-shrink-0" />
         }
-      />
+        onChange = {handleBusquedaChange}
+        value={busqueda}
+        />
+
+
+      <Card className="Search-Card">
+        <CardBody>
+        <ul className="Search-Card-items">
+            {filtrarElemento().map((producto, index) => (
+              <li
+              key = {index} 
+              onClick={(e) => handleFocus(index)} 
+              className={select === index ? "Search-Card-items-focus" : ""}
+              >
+                <span>{producto.nombre}</span>
+              </li>
+              
+            ))}
+         </ul>
+        </CardBody>
+      </Card>
+         
+          
     </div>
+    </>
   );
 }
 

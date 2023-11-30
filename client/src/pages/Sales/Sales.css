@@ -62,6 +62,19 @@
 .Sales-item-card{
     overflow: scroll !important;
     overflow-x: hidden !important;
-    max-height: 300px;
+    max-height: 200px;
 }
-
+.SalesDivider{
+    margin: 15px;
+}
+.sell-button{
+    color: white;
+    font-size: 20px;
+    width: 200px;
+}
+.Sell-button-container{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

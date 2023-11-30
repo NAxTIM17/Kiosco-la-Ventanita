@@ -1,25 +1,71 @@
 import "./Sales.css"
 import SearchInput from "../../Components/Search"
-import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react"
-import { useState } from "react"
+import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react"
 import ProductItem from "../../Components/Sales-Item"
+import { DeleteIcon } from "../../Components/DeleteIcon/DeleteIcon"
+import { useEffect, useState } from "react"
+
+const columns = [
+    {
+        key: 'producto',
+        label: 'PRODUCTO'
+    },
+    
+    {
+        key: 'cantidad',
+        label: 'CANTIDAD'
+    },
+    
+    {
+        key: 'precio',
+        label: 'PRECIO'
+    }
+]
 
 function Sales (){
+
+
+    const [item, setitem] = useState({})
+    const [carrito, setCarrito] = useState([])
+    const [table, setTable] = useState([])
+
+    //me causaba el error de no poder renderizar un componente por encima de otro
+    const AgarrarProducto = (producto) =>{
+        useEffect(()=>{
+            setitem(producto)
+        },[setitem, producto])
+    }
+    
+    const AgregarCarrito = () =>{
+        console.log(typeof carrito)
+        setCarrito([...carrito, item])
+    }
+
+    const AgregarTable = () =>{
+
+    }
 
     return(
         <>
         <div className="Sales-Title">
-            <h1>SALES</h1>
+            <h1>VENTAS</h1>
         </div>
         <div className="Sales">
             <div className="Sales-container">
                 <div className="Sales-items">
-                    <SearchInput/>
+                    <SearchInput func = {AgarrarProducto} />
+                    <Button color="primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
-                    <ProductItem ProductName="hola"/>
+                    {
+                        carrito.map((producto, index)=>(
+                            <ProductItem key={index} ProductName={`Nombre: ${producto.nombre}`} Price={`Precio: $${producto.precio}`}/>
+                        ))
+                    }
                 </div>
-                    
+                <div className="Sales-button">
+                    <Button color="primary" variant="shadow" onClick={AgregarTable}>Agregar</Button>
+                </div>
                 </div>
                 <div className="Sales-amount">
                     <div className="SalesProducts">
@@ -27,18 +73,17 @@ function Sales (){
                             <Table
                             isHeaderSticky
                             className="Table-table"
+                            aria-label="Example table with client side sorting"
                             >
-                                <TableHeader>
-                                    <TableColumn>Producto</TableColumn>
-                                    <TableColumn>Cantidad</TableColumn>
-                                    <TableColumn>Precio</TableColumn>
+                                <TableHeader columns={columns}>
+                                    {(columns) => <TableColumn key={columns.key}>{columns.label}</TableColumn>}
                                 </TableHeader>
-                                <TableBody>
-                                    <TableRow key="1">
-                                        <TableCell>Gaseosa</TableCell>
-                                        <TableCell>20</TableCell>
-                                        <TableCell>$5000</TableCell>
-                                    </TableRow>
+                                <TableBody items={table}>
+                                    {(item)=>(
+                                        <TableRow key={item.key} >
+                                            {(columnskey)=> <TableCell>{getKeyValue(item, columnskey)}</TableCell>}
+                                        </TableRow>
+                                    )}
                                 </TableBody>
                             </Table>
                         </div>
@@ -50,9 +95,17 @@ function Sales (){
                         <Card>
                             <CardBody>
                                     <h2>Total</h2>
-                                    <h1>$100</h1>
+                                    {
+                                        table.forEach(element => {
+                                          let price =+ element.precio
+                                          {<h1>{price}</h1>}
+                                        })
+                                    }
                             </CardBody>
                         </Card>
+                    </div>
+                    <div className="Sell-button-container">
+                        <Button color="success" variant="shadow" className="sell-button">Vender</Button>
                     </div>
                 </div>
             </div>

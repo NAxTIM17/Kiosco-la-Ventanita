@@ -1,0 +1,26 @@
+.container-Search{
+    display: flex;
+    flex-direction: column;
+}
+.Search-Card{
+    margin-top: 10px;
+    width: 100%;
+    max-height: 200px;
+}
+.Search-Card-items{
+    cursor: pointer;
+}
+.Search-Card-items li{
+    height: 30px;
+    padding: 5px;
+}
+.Search-Card-items :hover{
+    background-color: var(--brand-color-darker);
+    color: white;
+    border-radius: 5px;
+}
+.Search-Card-items-focus{
+    background-color: var(--brand-color-darker);
+    color: white;
+    border-radius: 5px;
+}

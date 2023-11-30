@@ -18,10 +18,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5rem;
 }
 .CardNumber{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50px;
+}
+.Card-Info{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
