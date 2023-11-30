@@ -41,22 +41,26 @@ export default function SearchInput(props) {
 
   const [busqueda, setBusqueda] = useState('')
   const [select, setSelected] = useState(null)
+
+  console.log(select)
   
-  props.func(Productos[select])
-
+  
   const handleFocus = (index) =>{
-      setSelected(index)
+    setSelected(index)
   }
-
+  
   const handleBusquedaChange = (event) => {
     setBusqueda(event.target.value)
     
-
+    
   }
   const filtrarElemento = () => {
     return Productos.filter((productos) =>
     productos.nombre.toLowerCase().includes(busqueda.toLowerCase()))
   }
+  let objs = filtrarElemento()
+  //console.log(objs[select])
+  props.func(objs[select])
   
   const agarrarProducto = (event) =>{
     console.log(event.target.value)

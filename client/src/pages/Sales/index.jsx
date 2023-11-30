@@ -37,7 +37,7 @@ function Sales (){
     }
     
     const AgregarCarrito = () =>{
-        console.log(typeof carrito)
+        console.log(item)
         setCarrito([...carrito, item])
     }
 
@@ -64,7 +64,7 @@ function Sales (){
                     }
                 </div>
                 <div className="Sales-button">
-                    <Button color="primary" variant="shadow" onClick={AgregarTable}>Agregar</Button>
+                    <Button color="primary" variant="shadow" onClick={AgregarTable()}>Agregar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">
