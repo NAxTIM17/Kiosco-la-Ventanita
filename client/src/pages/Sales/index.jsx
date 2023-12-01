@@ -21,7 +21,6 @@ const columns = [
         label: 'PRECIO'
     }
 ]
-
 function Sales (){
 
 
@@ -30,20 +29,26 @@ function Sales (){
     const [table, setTable] = useState([])
 
     //me causaba el error de no poder renderizar un componente por encima de otro
-    const AgarrarProducto = (producto) =>{
+    const AgarrarProducto = (productos) =>{
         useEffect(()=>{
-            setitem(producto)
-        },[setitem, producto])
+            setitem(productos)
+        },[productos])
     }
     
     const AgregarCarrito = () =>{
-        console.log(item)
         setCarrito([...carrito, item])
     }
 
     const AgregarTable = () =>{
 
     }
+
+    const EliminarProducto = (index) =>{
+        carrito.splice(index,1)
+        setCarrito([...carrito])//Actualizo el array de carrito
+    }
+
+    //quiero que al darle click al icono de eliminar obtenga el index del array
 
     return(
         <>
@@ -64,7 +69,7 @@ function Sales (){
                     }
                 </div>
                 <div className="Sales-button">
-                    <Button color="primary" variant="shadow" onClick={AgregarTable()}>Agregar</Button>
+                    <Button color="danger" variant="shadow" onClick={(e) => {EliminarProducto()}}>Eliminar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">

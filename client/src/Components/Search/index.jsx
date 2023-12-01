@@ -35,36 +35,25 @@ export const SearchIcon = (props) => (
   );
   
 
-export default function SearchInput(props) {
 
-  
+export default function SearchInput(props) {
 
   const [busqueda, setBusqueda] = useState('')
   const [select, setSelected] = useState(null)
-
-  console.log(select)
-  
-  
-  const handleFocus = (index) =>{
-    setSelected(index)
-  }
   
   const handleBusquedaChange = (event) => {
     setBusqueda(event.target.value)
-    
-    
   }
+
   const filtrarElemento = () => {
     return Productos.filter((productos) =>
     productos.nombre.toLowerCase().includes(busqueda.toLowerCase()))
   }
+  
   let objs = filtrarElemento()
-  //console.log(objs[select])
+  //aqui paso de info al padre desde el hijo
   props.func(objs[select])
   
-  const agarrarProducto = (event) =>{
-    console.log(event.target.value)
-  }
   return (
       <>
     <div className="w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white container-Search">
@@ -100,26 +89,21 @@ export default function SearchInput(props) {
         onChange = {handleBusquedaChange}
         value={busqueda}
         />
-
-
       <Card className="Search-Card">
         <CardBody>
         <ul className="Search-Card-items">
             {filtrarElemento().map((producto, index) => (
               <li
               key = {index} 
-              onClick={(e) => handleFocus(index)} 
+              onClick={(e) => setSelected(index)} 
               className={select === index ? "Search-Card-items-focus" : ""}
               >
                 <span>{producto.nombre}</span>
               </li>
-              
             ))}
          </ul>
         </CardBody>
       </Card>
-         
-          
     </div>
     </>
   );

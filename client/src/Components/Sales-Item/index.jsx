@@ -40,7 +40,7 @@ function ProductItem({ProductName, Price}){
                         </div>
                         <div className="CardDeleteIcon">
                             <span className="text-lg text-danger active:opacity-50">
-                                <DeleteIcon className = " cursor-pointer "/>
+                                <DeleteIcon className = " cursor-pointer " onClick = {(e) => console.log(e)}/>
                             </span>
                         </div>
                 </div>
