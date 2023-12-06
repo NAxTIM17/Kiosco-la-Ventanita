@@ -4,6 +4,8 @@ import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, Table
 import ProductItem from "../../Components/Sales-Item"
 import { DeleteIcon } from "../../Components/DeleteIcon/DeleteIcon"
 import { useEffect, useState } from "react"
+//productos get
+import Productos from "../../Providers/Products";
 
 const columns = [
     {
@@ -28,6 +30,9 @@ function Sales (){
     const [carrito, setCarrito] = useState([])
     const [table, setTable] = useState([])
     const [cantidades, setCantidad] = useState([])
+    //Search
+    const [filterText, setFilterText] = useState('')
+
 
     //me causaba el error de no poder renderizar un componente por encima de otro
     const AgarrarProducto = (productos) =>{
@@ -111,7 +116,7 @@ function Sales (){
         <div className="Sales">
             <div className="Sales-container">
                 <div className="Sales-items">
-                    <SearchInput func = {AgarrarProducto} />
+                    <SearchInput func = {AgarrarProducto} filterText = {filterText} onFilterTextChange = {setFilterText} products={Productos} />
                     <Button color="primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">

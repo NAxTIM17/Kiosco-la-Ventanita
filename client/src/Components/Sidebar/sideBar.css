@@ -7,9 +7,13 @@
     text-align: center;
     flex-direction: column;
     flex: 1 1 100vh;
+    box-shadow: 5px 5px 10px #888888;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
 }
 .navBar-buttons{
-    height: 98%;
+    height: 93%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,4 +21,10 @@
 .navBar-button{
     width: 100%;
     margin-top: 10px;
+}
+.nav-bar-icon{
+    font-size: 30px;
+}
+.navBar-Title h1{
+    font-weight: bold;
 }
