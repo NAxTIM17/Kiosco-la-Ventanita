@@ -37,24 +37,24 @@ function Sales (){
     }
     //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito
     const AgregarCarrito = () =>{
-        let newItem = item
-        newItem = {...newItem, cantidad: 0}
-        setCarrito([...carrito, newItem])
+        console.log(item)
+        if(item === undefined ){
+            console.log("seleccione un producto primero")
+        }else{
+            let newItem = item
+            newItem = {...newItem, cantidad: 0}
+            setCarrito([...carrito, newItem])
+        }
     }
-
     //Muestra cada vez que table se actualiza
     useEffect(()=>{
         console.log("table actualizado")
         console.log(table)
     },[setTable, table])
-
     //Funciona
     const AgregarTable = () =>{
         if(carrito.length > 0){
-            let arrayCarrito = cantidades
-            arrayCarrito = [...arrayCarrito]
-            console.log(arrayCarrito)
-
+            //logica de agregado a la tabla y las cantidades
             carrito.forEach((elemento)=>{if(elemento.cantidad === 0){
                 elemento.cantidad = cantidades[0]
                 console.log("if")
