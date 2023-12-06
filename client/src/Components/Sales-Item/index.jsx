@@ -3,18 +3,20 @@ import { Divider, Card, CardBody, Button} from "@nextui-org/react"
 import { useState } from 'react'
 import { DeleteIcon } from '../DeleteIcon/DeleteIcon'
 
-function ProductItem({ProductName, Price}){
-    const[add, setAdd] = useState(0)
+function ProductItem({ProductName, Price, Func}){
+    const[add, setAdd] = useState(1)
 
     const handleClickAdd = () =>{
             setAdd(add + 1)
     }
     const handleClickSub = () =>{
-        if(add > 0){
+        if(add > 1){
             setAdd(add - 1)
         }
-        
     }
+
+    //paso info para el padre
+    Func(add)
     return(
         <Card className="Sales-Card">
             <CardBody>
@@ -24,7 +26,7 @@ function ProductItem({ProductName, Price}){
                             +
                         </Button>
                         <div className="CardNumber">
-                          {add}
+                            {add}
                         </div>
                         <Button color="default" onClick={handleClickSub}>
                             -

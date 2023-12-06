@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 const columns = [
     {
-        key: 'producto',
+        key: 'nombre',
         label: 'PRODUCTO'
     },
     
@@ -27,6 +27,7 @@ function Sales (){
     const [item, setitem] = useState({})
     const [carrito, setCarrito] = useState([])
     const [table, setTable] = useState([])
+    const [cantidades, setCantidad] = useState([])
 
     //me causaba el error de no poder renderizar un componente por encima de otro
     const AgarrarProducto = (productos) =>{
@@ -34,22 +35,69 @@ function Sales (){
             setitem(productos)
         },[productos])
     }
-    
+    //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito
     const AgregarCarrito = () =>{
-        setCarrito([...carrito, item])
+        let newItem = item
+        newItem = {...newItem, cantidad: 0}
+        setCarrito([...carrito, newItem])
     }
 
+    //Muestra cada vez que table se actualiza
+    useEffect(()=>{
+        console.log("table actualizado")
+        console.log(table)
+    },[setTable, table])
+
+    //Funciona
     const AgregarTable = () =>{
+        if(carrito.length > 0){
+            let arrayCarrito = cantidades
+            arrayCarrito = [...arrayCarrito]
+            console.log(arrayCarrito)
 
+            carrito.forEach((elemento)=>{if(elemento.cantidad === 0){
+                elemento.cantidad = cantidades[0]
+                console.log("if")
+            }else{
+                console.log("fuera del if")   
+            }})
+
+
+            setTable([...table, ...carrito])
+            console.log(carrito)
+            EliminarProducto()
+        }else{
+            console.log("Nada para mostrar")
+        }
     }
-
+    //missing the index product
     const EliminarProducto = (index) =>{
         carrito.splice(index,1)
-        setCarrito([...carrito])//Actualizo el array de carrito
+        setCarrito([...carrito])//Actualizo el array de carrit
+    }
+    //Done
+    const AgarrarCantidad = (cantidad) =>{
+        useEffect(()=>{
+            let contador = 0
+            contador += cantidad
+            setCantidad([contador])
+        },[cantidad])
+    }
+    //funciona xd
+    const SumarNumeros = (array) =>{
+         let contador = 0
+        if(array.length > 0){
+            array.forEach(element => {
+                contador += element.precio * element.cantidad
+            });
+        }else{
+            return("Total")
+        }
+
+        return contador
     }
 
     //quiero que al darle click al icono de eliminar obtenga el index del array
-
     return(
         <>
         <div className="Sales-Title">
@@ -64,12 +112,12 @@ function Sales (){
                 <div className="Sales-item-card">
                     {
                         carrito.map((producto, index)=>(
-                            <ProductItem key={index} ProductName={`Nombre: ${producto.nombre}`} Price={`Precio: $${producto.precio}`}/>
+                            <ProductItem key={index} ProductName={`Nombre: ${producto.nombre}`} Price={`Precio: $${producto.precio}`} Func={AgarrarCantidad}/>
                         ))
                     }
                 </div>
                 <div className="Sales-button">
-                    <Button color="danger" variant="shadow" onClick={(e) => {EliminarProducto()}}>Eliminar</Button>
+                    <Button color="primary" variant="shadow" className="" onClick={(e) => {AgregarTable()}}>Agregar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">
@@ -85,7 +133,7 @@ function Sales (){
                                 </TableHeader>
                                 <TableBody items={table}>
                                     {(item)=>(
-                                        <TableRow key={item.key} >
+                                        <TableRow key={item.id} >
                                             {(columnskey)=> <TableCell>{getKeyValue(item, columnskey)}</TableCell>}
                                         </TableRow>
                                     )}
@@ -99,13 +147,10 @@ function Sales (){
                     <div className="CardPrice">
                         <Card>
                             <CardBody>
-                                    <h2>Total</h2>
-                                    {
-                                        table.forEach(element => {
-                                          let price =+ element.precio
-                                          {<h1>{price}</h1>}
-                                        })
-                                    }
+                                   <h1>
+                                    $
+                                    {SumarNumeros(table)}
+                                    </h1>
                             </CardBody>
                         </Card>
                     </div>
