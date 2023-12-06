@@ -65,7 +65,7 @@ function Sales (){
 
             setTable([...table, ...carrito])
             console.log(carrito)
-            EliminarProducto()
+            EliminarProducto(0)
         }else{
             console.log("Nada para mostrar")
         }
@@ -95,6 +95,11 @@ function Sales (){
         }
 
         return contador
+    }
+
+    const LimpiarTable = () =>{
+        table.splice(0,1)
+        setTable([...table])
     }
 
     //quiero que al darle click al icono de eliminar obtenga el index del array
@@ -141,6 +146,9 @@ function Sales (){
                             </Table>
                         </div>
                     </div>
+                    <Button color="danger" variant="shadow" onClick={(e)=> {LimpiarTable()}}>
+                        Limpiar Tabla
+                    </Button>
                     <div className="SalesDivider">
                         <Divider/>
                     </div>

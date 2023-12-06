@@ -13,7 +13,7 @@ function SideBar(){
         <>
             <div className="navBar">
               <div className="navBar-Title">
-                <h1>Side Bar</h1>
+                <h1>Kiosco la Ventanita</h1>
               </div>
               <div className="navBar-buttons">  
                 <div className="navBar-buttons-pages">
