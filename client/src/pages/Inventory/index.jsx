@@ -25,6 +25,7 @@ const columns = [
 function Inventory(){
 
   const [item, setItem] = useState([])
+  const [filterText, setFilterText] = useState('')
   
   return(
     <>
@@ -34,7 +35,7 @@ function Inventory(){
       </div>
       <div className="inventory-container-table">
         <div className="container-table-search">
-            <SearchInput/>
+            <SearchInput filterText={filterText} onFilterTextChange={setFilterText}/>
         </div>
         <div className="container-table">
             <TableProducts Columns={columns} Items={item}/>
