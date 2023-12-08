@@ -38,6 +38,7 @@ function ProductItem({ProductName, Price, Func}){
                 <div className="Card-Info">
                         <div className="CardProduct">
                            <h3>{ProductName}</h3>
+                           <h3>Cantidad</h3>
                            <h3>{Price}</h3>
                         </div>
                         <div className="CardDeleteIcon">

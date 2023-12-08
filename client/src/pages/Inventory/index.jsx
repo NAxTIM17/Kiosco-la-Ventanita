@@ -1,8 +1,31 @@
 import './inventory.css'
-import React from 'react';
+import React, { useState } from 'react';
 import SearchInput from '../../Components/Search';
+import TableProducts from '../../Components/Table';
 
+const columns = [
+  {
+      key: 'nombre',
+      label: 'PRODUCTO'
+  },
+  
+  {
+      key: 'cantidad',
+      label: 'CANTIDAD'
+  },
+  {
+      key: 'descripcion',
+      label: 'DESCRIPCION'
+  },
+  {
+      key: 'precio',
+      label: 'PRECIO'
+  }
+]
 function Inventory(){
+
+  const [item, setItem] = useState([])
+  
   return(
     <>
     <div className="inventory-container">
@@ -14,7 +37,7 @@ function Inventory(){
             <SearchInput/>
         </div>
         <div className="container-table">
-
+            <TableProducts Columns={columns} Items={item}/>
         </div>
       </div>
     </div>

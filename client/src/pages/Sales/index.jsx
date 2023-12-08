@@ -4,6 +4,7 @@ import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, Table
 import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
+import TableProducts from "../../Components/Table"
 
 //productos get
 import Productos from "../../Providers/Products";
@@ -119,7 +120,7 @@ function Sales (){
                 <div className="Sales-items">
                     <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
                     <CardAutoComplete func = {AgarrarProducto} products = {Productos} filterText = {filterText}/>
-                    <Button color="primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
+                    <Button color = "primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
                     {
@@ -130,27 +131,13 @@ function Sales (){
                 </div>
                 <div className="Sales-button">
                     <Button color="primary" variant="shadow" className="" onClick={(e) => {AgregarTable()}}>Agregar</Button>
+                    <Button color = "danger" onClick={(e)=> {EliminarProducto()}} >Eliminar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">
                     <div className="SalesProducts">
                         <div className="Table">
-                            <Table
-                            isHeaderSticky
-                            className="Table-table"
-                            aria-label="Example table with client side sorting"
-                            >
-                                <TableHeader columns={columns}>
-                                    {(columns) => <TableColumn key={columns.key}>{columns.label}</TableColumn>}
-                                </TableHeader>
-                                <TableBody items={table}>
-                                    {(item)=>(
-                                        <TableRow key={item.id} >
-                                            {(columnskey)=> <TableCell>{getKeyValue(item, columnskey)}</TableCell>}
-                                        </TableRow>
-                                    )}
-                                </TableBody>
-                            </Table>
+                           <TableProducts Items={table} Columns={columns}/>
                         </div>
                     </div>
                     <Button color="danger" variant="shadow" onClick={(e)=> {LimpiarTable()}}>

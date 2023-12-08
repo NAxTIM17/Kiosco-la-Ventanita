@@ -129,6 +129,8 @@ function Purchases (){
                 </div>
                 <div className="Sales-button">
                     <Button color="primary" variant="shadow" className="" onClick={(e) => {AgregarTable()}}>Agregar</Button>
+                    <Button color = "danger" onClick={(e)=> {EliminarProducto()}} >Eliminar</Button>
+
                 </div>
                 </div>
                 <div className="Sales-amount">
