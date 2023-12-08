@@ -1,6 +1,6 @@
 import "./Sales.css"
 import SearchInput from "../../Components/Search"
-import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react"
+import { Divider, Card, CardBody, Button} from "@nextui-org/react"
 import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
@@ -120,7 +120,7 @@ function Sales (){
                 <div className="Sales-items">
                     <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
                     <CardAutoComplete func = {AgarrarProducto} products = {Productos} filterText = {filterText}/>
-                    <Button color = "primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
+                    <Button color = "primary" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
                     {
@@ -130,8 +130,8 @@ function Sales (){
                     }
                 </div>
                 <div className="Sales-button">
-                    <Button color="primary" variant="shadow" className="" onClick={(e) => {AgregarTable()}}>Agregar</Button>
-                    <Button color = "danger" onClick={(e)=> {EliminarProducto()}} >Eliminar</Button>
+                    <Button color="primary" variant="shadow" className="" onClick={() => {AgregarTable()}}>Agregar</Button>
+                    <Button color = "danger" onClick={()=> {EliminarProducto()}} >Eliminar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">
@@ -140,7 +140,7 @@ function Sales (){
                            <TableProducts Items={table} Columns={columns}/>
                         </div>
                     </div>
-                    <Button color="danger" variant="shadow" onClick={(e)=> {LimpiarTable()}}>
+                    <Button color="danger" variant="shadow" onClick={()=> {LimpiarTable()}}>
                         Limpiar Tabla
                     </Button>
                     <div className="SalesDivider">

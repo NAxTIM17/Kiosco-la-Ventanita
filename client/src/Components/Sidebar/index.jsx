@@ -1,9 +1,8 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from "@nextui-org/react";
 import {Link, useNavigate} from "react-router-dom";
 import './SideBar.css'
-import UserIcon from "../iconUser";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShop } from '@fortawesome/free-solid-svg-icons';
+import { faShop, faHouse, faCartShopping, faBasketShopping, faBoxOpen,faUser } from '@fortawesome/free-solid-svg-icons';
 
 function SideBar(){
 
@@ -22,19 +21,36 @@ function SideBar(){
                 <div className="navBar-buttons-pages">
                 <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
                     navigate("/")
-                  }}>Inicio</Button>
+                  }}>
+                    <FontAwesomeIcon icon={faHouse} />
+                    Inicio
+                </Button>
                   <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
                     navigate("/sales")
-                  }}>Ventas</Button>
+                  }}>
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    Ventas
+                  </Button>
                   <Button className="navBar-button" color="primary" variant="shadow"  onClick={()=>{
                     navigate("/purchases")
-                  }}>Compras</Button>
+                  }}>
+                    <FontAwesomeIcon icon={faBasketShopping} />
+                    Compras
+                  </Button>
                   <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
                     navigate("/inventory")
-                  }}>Inventario</Button>
+                  }}>
+                    <FontAwesomeIcon icon={faBoxOpen} />
+                    Inventario
+                  </Button>
                 </div>
                 <div className="navBar-Button-logout">
-                  <Button className="navBar-button" color="danger" variant="shadow" startContent = {<UserIcon/>} >Log Out</Button>
+                  <Button className="navBar-button" color="danger" variant="shadow"onClick={()=>{
+                    navigate("/login")
+                  }}>
+                    <FontAwesomeIcon icon={faUser} />
+                    Log Out
+                  </Button>
                 </div>
               </div>
             </div>

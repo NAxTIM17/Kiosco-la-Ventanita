@@ -118,7 +118,7 @@ function Purchases (){
                 <div className="Sales-items">
                     <SearchInput func = {AgarrarProducto} filterText = {filterText} onFilterTextChange = {setFilterText} products={Productos} />
                     <CardAutoComplete func = {AgarrarProducto} products = {Productos} filterText = {filterText}/>
-                    <Button color="primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
+                    <Button color="primary" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
                     {
@@ -128,8 +128,8 @@ function Purchases (){
                     }
                 </div>
                 <div className="Sales-button">
-                    <Button color="primary" variant="shadow" className="" onClick={(e) => {AgregarTable()}}>Agregar</Button>
-                    <Button color = "danger" onClick={(e)=> {EliminarProducto()}} >Eliminar</Button>
+                    <Button color="primary" variant="shadow" className="" onClick={() => {AgregarTable()}}>Agregar</Button>
+                    <Button color = "danger" onClick={()=> {EliminarProducto()}} >Eliminar</Button>
 
                 </div>
                 </div>
@@ -154,7 +154,7 @@ function Purchases (){
                             </Table>
                         </div>
                     </div>
-                    <Button color="danger" variant="shadow" onClick={(e)=> {LimpiarTable()}}>
+                    <Button color="danger" variant="shadow" onClick={()=> {LimpiarTable()}}>
                         Limpiar Tabla
                     </Button>
                     <div className="SalesDivider">
