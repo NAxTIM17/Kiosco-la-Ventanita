@@ -1,5 +1,4 @@
 .Container-Home{
-    background-color: var(--brand-base-color);
     margin: 5px;
     height: 85vh;
     display: flex;
@@ -9,7 +8,6 @@
     padding: 10px;
 }
 .Container-Home-01{
-    background-color: var(--brand-second-color);
     flex: 1 1 50%;
     display: flex;
     flex-direction: row;
@@ -17,14 +15,19 @@
     gap: 10px;
 }
 .Container-Home-sub01{
-    background-color: var(--brand-fourth-color);
     flex: 1 1 50%;
 }
+.Container-Home-sub01 h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+.Container-Home-sub01 h1{
+    font-size: 100px;
+    font-weight: bold;
+}
 .Container-Home-sub02{
-    background-color: var(--brand-base-color);
     flex: 1 1 30%;
 }
 .Container-Home-02{
-    background-color: var(--brand-third-color);
     flex: 0 1 30%;
 }
