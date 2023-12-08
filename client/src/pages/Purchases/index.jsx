@@ -1,10 +1,9 @@
-import "./Sales.css"
+import "../Sales/Sales.css"
 import SearchInput from "../../Components/Search"
 import { Divider, Card, CardBody, Button, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react"
 import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
-
 //productos get
 import Productos from "../../Providers/Products";
 
@@ -24,7 +23,7 @@ const columns = [
         label: 'PRECIO'
     }
 ]
-function Sales (){
+function Purchases (){
 
 
     const [item, setitem] = useState({})
@@ -112,12 +111,12 @@ function Sales (){
     return(
         <>
         <div className="Sales-Title">
-            <h1>VENTAS</h1>
+            <h1>COMPRAS</h1>
         </div>
         <div className="Sales">
             <div className="Sales-container">
                 <div className="Sales-items">
-                    <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
+                    <SearchInput func = {AgarrarProducto} filterText = {filterText} onFilterTextChange = {setFilterText} products={Productos} />
                     <CardAutoComplete func = {AgarrarProducto} products = {Productos} filterText = {filterText}/>
                     <Button color="primary" onClick = {(e)=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
@@ -180,4 +179,4 @@ function Sales (){
 
 }
 
-export default Sales
+export default Purchases

@@ -1,5 +1,4 @@
-import {Input, Card, CardBody, Button} from "@nextui-org/react";
-import { useState} from "react";
+import {Input} from "@nextui-org/react";
 import './Search.css'
 
 //icono de la barra de busqueda
@@ -32,19 +31,9 @@ export const SearchIcon = (props) => (
     </svg>
   );
   
-export default function SearchInput({filterText, onFilterTextChange, products, func}) {
+export default function SearchInput({filterText, onFilterTextChange}) {
 
-  const [select, setSelected] = useState(null)
-
-  const filtrarElemento = () => {
-    return products.filter((productos) =>
-    productos.nombre.toLowerCase().includes(filterText.toLowerCase()))
-  }
-  
-  let objs = filtrarElemento()
-  //aqui paso de info al padre desde el hijo
-  func(objs[select])
-  
+ 
   return (
       <>
     <div className="w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white container-Search">
@@ -80,21 +69,6 @@ export default function SearchInput({filterText, onFilterTextChange, products, f
         onChange = {(e)=> onFilterTextChange(e.target.value)}
         value={filterText}
         />
-      <Card className="Search-Card">
-        <CardBody>
-        <ul className="Search-Card-items">
-            {filtrarElemento().map((producto, index) => (
-              <li
-              key = {index} 
-              onClick={(e) => setSelected(index)} 
-              className={select === index ? "Search-Card-items-focus" : ""}
-              >
-                <span>{producto.nombre}</span>
-              </li>
-            ))}
-         </ul>
-        </CardBody>
-      </Card>
     </div>
     </>
   );
