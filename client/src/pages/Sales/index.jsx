@@ -5,6 +5,7 @@ import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
 import TableProducts from "../../Components/Table"
+import SideBar from "../../Components/Sidebar"
 
 //productos get
 import Productos from "../../Providers/Products";

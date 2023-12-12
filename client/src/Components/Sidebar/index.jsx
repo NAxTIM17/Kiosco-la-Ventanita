@@ -20,25 +20,25 @@ function SideBar(){
               <div className="navBar-buttons">  
                 <div className="navBar-buttons-pages">
                 <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/")
+                    navigate("/kiosco/home")
                   }}>
                     <FontAwesomeIcon icon={faHouse} />
                     Inicio
                 </Button>
                   <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/sales")
+                    navigate("/kiosco/sales")
                   }}>
                     <FontAwesomeIcon icon={faCartShopping} />
                     Ventas
                   </Button>
                   <Button className="navBar-button" color="primary" variant="shadow"  onClick={()=>{
-                    navigate("/purchases")
+                    navigate("/kiosco/purchases")
                   }}>
                     <FontAwesomeIcon icon={faBasketShopping} />
                     Compras
                   </Button>
                   <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/inventory")
+                    navigate("/kiosco/inventory")
                   }}>
                     <FontAwesomeIcon icon={faBoxOpen} />
                     Inventario
