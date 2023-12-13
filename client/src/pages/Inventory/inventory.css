@@ -25,10 +25,9 @@
     gap: .2rem;
 }
 .container-table-search{
-    flex: 1 1 10%;
+    margin-bottom: 15px;
 }
 .container-table{
-    flex: 1 1 80%;
     background-color: rgba(255, 255, 255, 0.315);
     border-radius: 15px;
 }

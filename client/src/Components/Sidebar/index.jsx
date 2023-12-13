@@ -1,8 +1,8 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from "@nextui-org/react";
-import {Link, useNavigate} from "react-router-dom";
+import { Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 import './SideBar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShop, faHouse, faCartShopping, faBasketShopping, faBoxOpen,faUser } from '@fortawesome/free-solid-svg-icons';
+import { faShop, faHouse, faCartShopping, faBasketShopping, faBoxOpen,faUser, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function SideBar(){
 
@@ -48,7 +48,7 @@ function SideBar(){
                   <Button className="navBar-button" color="danger" variant="shadow"onClick={()=>{
                     navigate("/login")
                   }}>
-                    <FontAwesomeIcon icon={faUser} />
+                    <FontAwesomeIcon icon={faArrowRightFromBracket}/>
                     Log Out
                   </Button>
                 </div>

@@ -43,12 +43,17 @@ function Purchases (){
     //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito
     const AgregarCarrito = () =>{
         console.log(item)
-        if(item === undefined ){
-            console.log("seleccione un producto primero")
+        if(carrito.length === 0){
+            if(item === undefined ){
+                console.log("seleccione un producto primero")
+            }else{
+                let newItem = item
+                //aqui le agrego a item el campo cantidad y le doy el valor de 0.
+                newItem = {...newItem, cantidad: 0}
+                setCarrito([...carrito, newItem])
+            }
         }else{
-            let newItem = item
-            newItem = {...newItem, cantidad: 0}
-            setCarrito([...carrito, newItem])
+            console.log("No se puede Agregar otro producto")
         }
     }
     //Muestra cada vez que table se actualiza

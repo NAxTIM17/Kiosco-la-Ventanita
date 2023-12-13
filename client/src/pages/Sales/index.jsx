@@ -5,7 +5,6 @@ import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
 import TableProducts from "../../Components/Table"
-import SideBar from "../../Components/Sidebar"
 
 //productos get
 import Productos from "../../Providers/Products";
@@ -37,21 +36,26 @@ function Sales (){
     const [filterText, setFilterText] = useState('')
 
 
-    //me causaba el error de no poder renderizar un componente por encima de otro
+    //me causaba el error de no poder renderizar un componente por encima de otro.
     const AgarrarProducto = (productos) =>{
         useEffect(()=>{
             setitem(productos)
         },[productos])
     }
-    //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito
+    //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito.
     const AgregarCarrito = () =>{
         console.log(item)
-        if(item === undefined ){
-            console.log("seleccione un producto primero")
+        if(carrito.length === 0){
+            if(item === undefined ){
+                console.log("seleccione un producto primero")
+            }else{
+                let newItem = item
+                //aqui le agrego a item el campo cantidad y le doy el valor de 0.
+                newItem = {...newItem, cantidad: 0}
+                setCarrito([...carrito, newItem])
+            }
         }else{
-            let newItem = item
-            newItem = {...newItem, cantidad: 0}
-            setCarrito([...carrito, newItem])
+            console.log("No se puede Agregar otro producto")
         }
     }
     //Muestra cada vez que table se actualiza
@@ -62,8 +66,12 @@ function Sales (){
     //Funciona
     const AgregarTable = () =>{
         if(carrito.length > 0){
-            //logica de agregado a la tabla y las cantidades
-            carrito.forEach((elemento)=>{if(elemento.cantidad === 0){
+            //logica de agregado a la tabla y las cantidades.
+            //esta logica la tengo que cambiar pq no está clara y puede prestar a errores.
+
+            carrito.forEach((elemento)=>{
+                //como el calor de mi campo cantidad es 0 hago este if para modificar su valor (mirar AgarrrarCarrito()).
+            if(elemento.cantidad === 0){
                 elemento.cantidad = cantidades[0]
                 console.log("if")
             }else{
@@ -72,7 +80,7 @@ function Sales (){
 
 
             setTable([...table, ...carrito])
-            console.log(carrito)
+            //console.log(carrito)
             EliminarProducto(0)
         }else{
             console.log("Nada para mostrar")

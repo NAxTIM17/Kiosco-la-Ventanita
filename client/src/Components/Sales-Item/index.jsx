@@ -1,7 +1,6 @@
 import './Sales-Item.css'
 import { Divider, Card, CardBody, Button} from "@nextui-org/react"
 import { useState } from 'react'
-import { DeleteIcon } from '../DeleteIcon/DeleteIcon'
 
 function ProductItem({ProductName, Price, Func}){
     const[add, setAdd] = useState(1)
@@ -40,11 +39,6 @@ function ProductItem({ProductName, Price, Func}){
                            <h3>{ProductName}</h3>
                            <h3>Cantidad</h3>
                            <h3>{Price}</h3>
-                        </div>
-                        <div className="CardDeleteIcon">
-                            <span className="text-lg text-danger active:opacity-50">
-                                <DeleteIcon className = " cursor-pointer " onClick = {(e) => console.log(e)}/>
-                            </span>
                         </div>
                 </div>
                </div>

@@ -2,6 +2,7 @@ import './inventory.css'
 import React, { useState } from 'react';
 import SearchInput from '../../Components/Search';
 import TableProducts from '../../Components/Table';
+import Productos from '../../Providers/Products';
 
 const columns = [
   {
@@ -24,8 +25,12 @@ const columns = [
 ]
 function Inventory(){
 
-  const [item, setItem] = useState([])
   const [filterText, setFilterText] = useState('')
+
+  const filtrarElemento = () => {
+    return Productos.filter((productos) =>
+    productos.nombre.toLowerCase().includes(filterText.toLowerCase()))
+  }
   
   return(
     <>
@@ -38,7 +43,7 @@ function Inventory(){
             <SearchInput filterText={filterText} onFilterTextChange={setFilterText}/>
         </div>
         <div className="container-table">
-            <TableProducts Columns={columns} Items={item}/>
+            <TableProducts Columns={columns} Items={filtrarElemento()} />
         </div>
       </div>
     </div>
