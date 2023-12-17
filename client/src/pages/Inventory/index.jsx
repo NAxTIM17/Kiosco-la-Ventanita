@@ -2,7 +2,7 @@ import './inventory.css'
 import React, { useState } from 'react';
 import SearchInput from '../../Components/Search';
 import TableProducts from '../../Components/Table';
-import Productos from '../../Providers/Products';
+import axios from 'axios'
 
 const columns = [
   {
@@ -26,11 +26,20 @@ const columns = [
 function Inventory(){
 
   const [filterText, setFilterText] = useState('')
+  const [productos, setProductos] = useState([])
+
+  //axios
+  axios.get('http://localhost:1234/productos')
+  .then((res)=>{
+    setProductos(res.data)
+  })
 
   const filtrarElemento = () => {
-    return Productos.filter((productos) =>
+    return productos.filter((productos) =>
     productos.nombre.toLowerCase().includes(filterText.toLowerCase()))
   }
+
+  
   
   return(
     <>

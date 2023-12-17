@@ -5,9 +5,10 @@ import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
 import TableProducts from "../../Components/Table"
+import axios from 'axios'
 
 //productos get
-import Productos from "../../Providers/Products";
+
 
 const columns = [
     {
@@ -34,7 +35,13 @@ function Sales (){
     const [cantidades, setCantidad] = useState([])
     //Search
     const [filterText, setFilterText] = useState('')
+    const [productos, setProductos] = useState([])
 
+
+    axios.get('http://localhost:1234/productos')
+  .then((res)=>{
+    setProductos(res.data)
+  })
 
     //me causaba el error de no poder renderizar un componente por encima de otro.
     const AgarrarProducto = (productos) =>{
@@ -128,7 +135,7 @@ function Sales (){
             <div className="Sales-container">
                 <div className="Sales-items">
                     <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
-                    <CardAutoComplete func = {AgarrarProducto} products = {Productos} filterText = {filterText}/>
+                    <CardAutoComplete func = {AgarrarProducto} products = {productos} filterText = {filterText}/>
                     <Button color = "primary" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
