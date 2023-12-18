@@ -1,4 +1,3 @@
-import { ProductoModel } from "../API/models/ProductoModel.js"
 
 
 export class ProductoController {
