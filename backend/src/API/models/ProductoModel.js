@@ -5,7 +5,7 @@ export class ProductoModel{
 
     static async getAll() {
         try {
-          const [productos] = await connection.query('SELECT * FROM producto;');
+          const [productos] = await connection.execute('SELECT * FROM producto;');
           return productos;
         } catch (error) {
           console.error('Error al obtener productos:', error);
