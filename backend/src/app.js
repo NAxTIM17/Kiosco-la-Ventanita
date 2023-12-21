@@ -2,8 +2,7 @@ import express ,{ json } from 'express'
 import cors from 'cors'
 import { createProductoRouter } from './API/routes/ProductoRoute.js'
 import { createUserRoute } from './API/routes/UserRoute.js'
-import { bussinesRouter } from './API/routes/BussinesRouter.js'
-
+import dotenv from 'dotenv/config.js'
 
 export const createApp = ({productoModel, userModel }) =>{
 
@@ -12,8 +11,8 @@ export const createApp = ({productoModel, userModel }) =>{
     app.use(json())
     app.use(cors())
     
-    const PORT = 1234
-    
+    const PORT = process.env.PORT ?? 1234
+    console.log(process.env.SALT)
     app.use('/productos', createProductoRouter({ productoModel }))
     app.use('/usuarios', createUserRoute({userModel}))
     

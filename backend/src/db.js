@@ -9,8 +9,11 @@ const DEFAULT_CONFIG = {
     database : 'kioscolaventanitadb'
 }
 
-const connection = mysql.createPool(DEFAULT_CONFIG)
 
+const connection = mysql.createPool(DEFAULT_CONFIG)
 console.log("Database connected...")
+
+
+
 
 export default connection

@@ -1,18 +1,18 @@
 ###
-GET http://localhost:1234/productos
+GET http://localhost:8000/productos
 
 
  
-###
-GET http://localhost:1234/usuarios
+### 
+GET http://localhost:8000/usuarios
 
-###
-POST http://localhost:1234/usuarios
+### 
+POST http://localhost:8000/usuarios
 Content-Type: application/json
 
 {
-    "usuario" : "Sofy",
-    "contraseña" : "12345"
+    "usuario" : "Nacho",
+    "contraseña" : "NachoPassword"
 }
 
 ###

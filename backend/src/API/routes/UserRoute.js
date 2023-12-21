@@ -9,6 +9,7 @@ export const createUserRoute = ({userModel}) =>{
 
     userRoute.get('/', UserController.getAll)
     userRoute.post('/', UserController.create)
+    userRoute.get('/:name' , UserController.getByName)
 
     return userRoute
 

@@ -29,7 +29,7 @@ function Inventory(){
   const [productos, setProductos] = useState([])
 
   //axios
-  axios.get('http://localhost:1234/productos')
+  axios.get('http://localhost:8000/productos')
   .then((res)=>{
     setProductos(res.data)
   })
