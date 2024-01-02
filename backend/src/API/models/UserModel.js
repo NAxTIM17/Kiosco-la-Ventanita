@@ -1,5 +1,5 @@
 import connection from "../../db.js";
-import { PasswordEncrypt } from "./bcryptModel.js";
+import { PasswordEncrypt } from "../../middlewares/bcryptHandle.js";
 
 export class UserModel{
 
@@ -27,10 +27,9 @@ export class UserModel{
         }
     }
 
-    static async getByName({ name }) {
+    static async getByName({ userName }) {
         try {
-            const [user] = await connection.query('SELECT * FROM usuario WHERE usuario = ?;', [name])
-            console.log(user)
+            const [ user ] = await connection.query('SELECT * FROM usuario WHERE usuario = ?;', [userName])
             return user
         } catch (error) {
             console.error('Error al obtener  un usuario:', error);

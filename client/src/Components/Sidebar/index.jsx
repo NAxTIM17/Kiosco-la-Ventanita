@@ -1,14 +1,19 @@
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import './SideBar.css'
+import { useCookies } from 'react-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShop, faHouse, faCartShopping, faBasketShopping, faBoxOpen,faUser, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faShop, faHouse, faCartShopping, faBasketShopping, faBoxOpen, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function SideBar(){
 
   const navigate = useNavigate()
-
+  const [cookies, setCookie, removeCookie] = useCookies()
   
+
+  const handleLogout = () =>{
+    removeCookie('userInfo')
+  }
 
     return(
         <>
@@ -45,9 +50,7 @@ function SideBar(){
                   </Button>
                 </div>
                 <div className="navBar-Button-logout">
-                  <Button className="navBar-button" color="danger" variant="shadow"onClick={()=>{
-                    navigate("/login")
-                  }}>
+                  <Button className="navBar-button" color="danger" variant="shadow"onClick={handleLogout}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket}/>
                     Log Out
                   </Button>

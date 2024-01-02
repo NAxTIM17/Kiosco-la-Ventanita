@@ -1,32 +1,55 @@
 import './Login.css'
 import { Input, Button} from '@nextui-org/react'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEyeSlash, faEye} from '@fortawesome/free-solid-svg-icons';
 
+import axios from 'axios'
 
 
-function Login({setLogged}){
 
-    const navigate = useNavigate()
+
+function Login (){
+
     const [isActive, setIsActive] = useState(false)
+    const navigate = useNavigate()
+    const [cookies, setCookie] = useCookies()
 
     //user and password
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
 
+    useEffect(()=>{
+        console.log(cookies)
+    },[cookies])
+
 
     //logica de autentificacion
-    const HandleSubmit = (e) =>{
-        setLogged(true)
-        navigate('/kiosco/home')
+    const HandleLogin = () =>{
+        axios.post('http://localhost:8000/login',{
+            userName: user,
+            userPassword: password
+        }).then((response) =>{
+            if(response.data){
+                console.log(response)
+                navigate('/kiosco/home')
+                setCookie('userInfo', user)
+            }else{
+                console.log("user not found")
+            }
+        }).catch((err) =>{
+            console.log(err)
+        })
+
     }
 
     const ChangePassword = (e) =>{
         e.preventDefault()
         setIsActive(!isActive)
     }
+  
    
     return(
         <>
@@ -48,7 +71,7 @@ function Login({setLogged}){
                         } />
                     </div>
                     <div className="login-button">
-                        <Button color ='secondary' onClick={HandleSubmit}> Log in </Button>
+                        <Button color ='secondary' onClick={HandleLogin}> Log in </Button>
                     </div>
                 </div>
             </div>

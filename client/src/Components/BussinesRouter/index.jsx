@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useCookies } from 'react-cookie'
 //Componentes de las rutas
 import Home from '../../pages/Home'
 import Sales from '../../pages/Sales'
@@ -10,13 +10,12 @@ import Dashboard from '../../Dashboard'
 
 function BusinessRouter(){
     
-    const [logged, setLogged] = useState(false)
+    const [cookies] = useCookies()
 
     return(
-        logged ? (
+        cookies.userInfo ? (
             <Dashboard>
                 <Routes>
-                    //rutas protegidas
                     <Route path='/kiosco'>
                         <Route path='home' element = {<Home />}/>
                         <Route path='sales' element = {<Sales />}/>
@@ -28,7 +27,7 @@ function BusinessRouter(){
         )
         : 
         (
-            <Login setLogged = {setLogged}/>
+            <Login/>
         )
     )
 }

@@ -1,7 +1,4 @@
 import bcrypt from 'bcrypt'
-import dotenv from 'dotenv'
-
-const SALT = process.env.SALT
 
 
 export const PasswordEncrypt = ( password ) =>{
@@ -9,7 +6,7 @@ export const PasswordEncrypt = ( password ) =>{
         return passwordEncrypted //retunr Encrypted Password
 }
 
-export const DecryptPassword = ( password , passwordEncrypted ) =>{
-    const decrypt = bcrypt.compareSync(password, passwordEncrypted)
+export const DecryptPassword = async ( password , passwordEncrypted ) =>{
+    const decrypt = await bcrypt.compare(password, passwordEncrypted)
     return decrypt //return boolean
 }

@@ -6,13 +6,13 @@ GET http://localhost:8000/productos
 ### 
 GET http://localhost:8000/usuarios
 
-### 
-POST http://localhost:8000/usuarios
+###  
+POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "usuario" : "Nacho",
-    "contraseña" : "NachoPassword"
+    "userName" : "tanito",
+    "userPassword" : "tanito"
 }
 
 ###

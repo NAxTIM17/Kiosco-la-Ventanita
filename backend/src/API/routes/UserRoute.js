@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userController } from "../../controllers/UserController.js";
+import { userController } from "../controllers/UserController.js";
 
 export const createUserRoute = ({userModel}) =>{
 
@@ -9,7 +9,6 @@ export const createUserRoute = ({userModel}) =>{
 
     userRoute.get('/', UserController.getAll)
     userRoute.post('/', UserController.create)
-    userRoute.get('/:name' , UserController.getByName)
 
     return userRoute
 
