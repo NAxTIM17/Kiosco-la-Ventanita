@@ -14,11 +14,9 @@ function SideBar(){
   const [cookies, setCookie, removeCookie] = useCookies()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-  console.log("cookies del sidebar",cookies)
 
   const handleLogOut = () => {
     removeCookie("userInfo");
-    console.log("Funciona el handleLogOut")
   };
 
     return(

@@ -11,7 +11,6 @@ import Dashboard from '../../Dashboard'
 function BusinessRouter(){
     
     const [cookies, setCokkie, removeCookie] = useCookies()
-    console.log("cookies pero de el business router",cookies)
     return(
         cookies.userInfo ? (
             <Dashboard>

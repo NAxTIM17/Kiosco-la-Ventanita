@@ -19,7 +19,6 @@ function Login (){
     const [password, setPassword] = useState('')
     
     const navigate = useNavigate()
-    console.log("cookies del login...",cookies)
 
     //logica de autentificacion
     const HandleLogin = async () => {
@@ -32,7 +31,6 @@ function Login (){
           if (response.data) {
             setCookie('userInfo', user);
             navigate('/');
-            console.log(response);
           }
         } catch (error) {
             setInvalid(true);
