@@ -1,58 +1,48 @@
 import './Login.css'
 import { Input, Button} from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEyeSlash, faEye} from '@fortawesome/free-solid-svg-icons';
-
 import axios from 'axios'
-
-
 
 
 function Login (){
     //state para el ojo de login
-    const [isActive, setIsActive] = useState(false)
-    const [invalid, setInvalid] = useState(false)
-    const [cookies, setCookie] = useCookies()
+    const [ cookies, setCookie ] = useCookies()
+    const [ isActive, setIsActive ] = useState(false)
+    const [ invalid, setInvalid ] = useState(false)
     
     //user and password
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
     
     const navigate = useNavigate()
-
-    useEffect(()=>{
-        console.log(cookies)
-    },[cookies])
-
+    console.log("cookies del login...",cookies)
 
     //logica de autentificacion
-    const HandleLogin = () =>{
-        axios.post('http://localhost:8000/login',{
-
+    const HandleLogin = async () => {
+        try {
+          const response = await axios.post('http://localhost:8000/login', {
             userName: user,
-            userPassword: password
-
-        }).then((response) =>{
-            if(response.data){
-                console.log(response)
-                navigate('/kiosco/home')
-                setCookie('userInfo', user)
-            }
-        }).catch((err) =>{
-            console.log(err)
-            console.log("no se encontró")
-            setInvalid(true)
-        })
-
-    }
-
+            userPassword: password,
+          });
+      
+          if (response.data) {
+            setCookie('userInfo', user);
+            navigate('/');
+            console.log(response);
+          }
+        } catch (error) {
+            setInvalid(true);
+            console.log(error);
+            console.log('no se encontró');
+        }
+      };
    
     return(
         <>
-        <form>
             <div className="container-login">
                 <div className="login">
                     <h1>LOGIN</h1>
@@ -81,7 +71,6 @@ function Login (){
                     </div>
                 </div>
             </div>
-        </form>
         </>
     )
 }

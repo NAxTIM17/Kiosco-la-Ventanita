@@ -1,8 +1,10 @@
 import './inventory.css'
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SearchInput from '../../Components/Search';
 import TableProducts from '../../Components/Table';
 import axios from 'axios'
+import { Button } from '@nextui-org/react';
+import { useCookies } from 'react-cookie';
 
 const columns = [
   {
@@ -25,6 +27,8 @@ const columns = [
 ]
 function Inventory(){
 
+
+  const [cookies, setCookie, removeCookie] = useCookies()
   const [filterText, setFilterText] = useState('')
   const [productos, setProductos] = useState([])
 
@@ -33,6 +37,10 @@ function Inventory(){
   .then((res)=>{
     setProductos(res.data)
   })
+
+  const remove = () => {
+    removeCookie('userInfo')
+  }
 
   const filtrarElemento = () => {
     return productos.filter((productos) =>
@@ -53,6 +61,7 @@ function Inventory(){
         </div>
         <div className="container-table">
             <TableProducts Columns={columns} Items={filtrarElemento()} />
+            <Button onPress={remove} >logout</Button>
         </div>
       </div>
     </div>
