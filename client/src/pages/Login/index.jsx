@@ -12,14 +12,16 @@ import axios from 'axios'
 
 
 function Login (){
-
+    //state para el ojo de login
     const [isActive, setIsActive] = useState(false)
-    const navigate = useNavigate()
+    const [invalid, setInvalid] = useState(false)
     const [cookies, setCookie] = useCookies()
-
+    
     //user and password
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
+    
+    const navigate = useNavigate()
 
     useEffect(()=>{
         console.log(cookies)
@@ -29,27 +31,24 @@ function Login (){
     //logica de autentificacion
     const HandleLogin = () =>{
         axios.post('http://localhost:8000/login',{
+
             userName: user,
             userPassword: password
+
         }).then((response) =>{
             if(response.data){
                 console.log(response)
                 navigate('/kiosco/home')
                 setCookie('userInfo', user)
-            }else{
-                console.log("user not found")
             }
         }).catch((err) =>{
             console.log(err)
+            console.log("no se encontró")
+            setInvalid(true)
         })
 
     }
 
-    const ChangePassword = (e) =>{
-        e.preventDefault()
-        setIsActive(!isActive)
-    }
-  
    
     return(
         <>
@@ -58,15 +57,22 @@ function Login (){
                 <div className="login">
                     <h1>LOGIN</h1>
                     <div className="login-inputs">
-                        <Input type='text' label = 'Usuario' onChange={e => setUser(e.target.value)}  value={user}/>
-                        <Input type={isActive ? 'text' : 'password'} label = 'Constraseña' onChange={e => setPassword(e.target.value)} value={password}
+                        <Input isInvalid = {invalid} errorMessage = { invalid ? "Ingrese correctamente las credenciales" : ""} type='text' label = 'Usuario' onChange={(e) => {
+                            //esto se debe cambiar
+                            if(e.target.value === "") setInvalid(false)
+                            setUser(e.target.value)
+                        }}  value={user}/>
+                        <Input isInvalid = {invalid} errorMessage = { invalid ? "Ingrese correctamente las credenciales" : ""} type={isActive ? 'text' : 'password'} label = 'Constraseña' onChange={(e) => {
+                            if(e.target.value === "") setInvalid(false)
+                            setPassword(e.target.value)
+                        }} value={password}
                             endContent = {
-                            <button onClick={ChangePassword} className='flex justify-end self-center'>
+                            <span onClick={() => setIsActive(!isActive)} className='flex justify-end self-center cursor-pointer'>
                                 {
                                     isActive ? <FontAwesomeIcon icon={faEye} />
                                     : <FontAwesomeIcon icon={faEyeSlash} />
                                 }
-                            </button>
+                            </span>
 
                         } />
                     </div>
