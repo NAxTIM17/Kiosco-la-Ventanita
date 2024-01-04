@@ -1,5 +1,15 @@
 ###
 GET http://localhost:8000/productos
+###
+POST http://localhost:8000/productos/create
+Content-Type: application/json
+
+{
+    "nombre" : "Sfijas",
+    "descripcion" : "Lo mejor de Salta la Linda",
+    "cantidad" : 30,
+    "precio" : 500.00
+}
 
 
  

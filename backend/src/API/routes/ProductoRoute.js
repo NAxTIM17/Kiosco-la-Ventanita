@@ -9,6 +9,7 @@ export const createProductoRouter = ({ productoModel }) => {
 
     //rutas
     productoRouter.get('/', productoController.getAll)
+    productoRouter.post('/create', productoController.create)
 
 
     return productoRouter
