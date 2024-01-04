@@ -61,7 +61,7 @@ function SideBar(){
                 </div>
               </div>
             </div>
-            <Modals size={"sm"} isOpen={isOpen} Action={handleLogOut} onOpenChange={onOpenChange} modalHeader={"Log out"} buttonAction={"logout"} buttonClose={"close"}/>
+            <Modals size={"sm"} isOpen={isOpen} Action={handleLogOut} onOpenChange={onOpenChange} modalHeader={"Log out"} buttonAction={"logout"} buttonActionColor={"danger"} buttonClose={"close"}/>
         </>
     )
 }

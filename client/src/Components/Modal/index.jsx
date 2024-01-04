@@ -2,7 +2,7 @@ import {Modal, ModalContent, ModalHeader, ModalFooter, Button, ModalBody} from "
 import { useState } from "react";
 
 
-export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, buttonClose, Action, size}){
+export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, buttonActionColor,buttonClose, Action, size}){
 
     const [scroll, setScroll] = useState("inside")
 
@@ -27,7 +27,7 @@ export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, button
                     <Button color="primary" variant="light" onPress={onClose}>
                     {buttonClose}
                     </Button>
-                    <Button color="danger" onPress={Action}>
+                    <Button className="text-white" color={buttonActionColor} onPress={Action}>
                     {buttonAction}
                     </Button>
                 </ModalFooter>

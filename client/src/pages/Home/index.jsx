@@ -1,14 +1,14 @@
 import "./Home.css"
-import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
-
+import { useCookies } from 'react-cookie'
 
 function Home(){
+    const [cookies, useCookie, removeCookie] = useCookies()
     return(
         <>
             <div className="Container-Home">
                 <div className="Container-Home-01">
                         <div className="Container-Home-sub01">
-                            <h2>BIENVENIDO A</h2>
+                            <h2>{`BIENVENIDO ${cookies.userInfo}`}</h2>
                             <h1>KIOSCO LA VENTANITA</h1>
                         </div>
                         <div className="Container-Home-sub02">

@@ -11,8 +11,8 @@
     padding: 5px;
 }
 .Search-Card-items :hover{
-    background-color: var(--brand-color-darker);
-    color: white;
+    background-color: var(--brand-fourth-color);
+    color: #535353;
     border-radius: 5px;
 }
 .Search-Card-items-focus{

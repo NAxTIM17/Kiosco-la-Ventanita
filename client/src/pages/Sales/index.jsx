@@ -1,6 +1,7 @@
 import "./Sales.css"
 import SearchInput from "../../Components/Search"
-import { Divider, Card, CardBody, Button} from "@nextui-org/react"
+import { Modals } from '../../Components/Modal/index'
+import { Divider, Card, CardBody, Button, useDisclosure} from "@nextui-org/react"
 import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
 import CardAutoComplete from "../../Components/Card-autoComplete"
@@ -36,6 +37,9 @@ function Sales (){
     //Search
     const [filterText, setFilterText] = useState('')
     const [productos, setProductos] = useState([])
+    //modal
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
 
 
     axios.get('http://localhost:8000/productos')
@@ -125,6 +129,10 @@ function Sales (){
         setTable([...table])
     }
 
+    const handleSales = () =>{
+        console.log("venta...")
+    }
+
     //quiero que al darle click al icono de eliminar obtenga el index del array
     return(
         <>
@@ -136,7 +144,7 @@ function Sales (){
                 <div className="Sales-items">
                     <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
                     <CardAutoComplete func = {AgarrarProducto} products = {productos} filterText = {filterText}/>
-                    <Button color = "primary" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
+                    <Button color="primary" variant="shadow" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>
                 <div className="Sales-item-card">
                     {
@@ -147,7 +155,7 @@ function Sales (){
                 </div>
                 <div className="Sales-button">
                     <Button color="primary" variant="shadow" className="" onClick={() => {AgregarTable()}}>Agregar</Button>
-                    <Button color = "danger" onClick={()=> {EliminarProducto()}} >Eliminar</Button>
+                    <Button color="danger" variant="shadow" onClick={()=> {EliminarProducto()}} >Eliminar</Button>
                 </div>
                 </div>
                 <div className="Sales-amount">
@@ -173,11 +181,12 @@ function Sales (){
                         </Card>
                     </div>
                     <div className="Sell-button-container">
-                        <Button color="success" variant="shadow" className="sell-button">Vender</Button>
+                        <Button color="success" variant="shadow" onClick={onOpen} className="sell-button">Vender</Button>
                     </div>
                 </div>
             </div>
         </div>
+        <Modals isOpen={isOpen} onOpenChange={onOpenChange} modalHeader={"¿Quiere realizar esta venta?"} buttonAction={"Aceptar"} buttonActionColor={"success"} buttonClose={"Cancelar"} Action={handleSales} size={"sm"}/>
         </>
     )
 
