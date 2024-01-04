@@ -26,3 +26,16 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8000/sales
+
+###
+POST http://localhost:8000/sales/sale
+Content-Type: application/json
+
+{
+    "idProducto" : 4,
+    "idUsuario" : 7,
+    "cantidad" : 5,
+    "total" : 525.00,
+    "fecha" : "2024/1/4"
+}

@@ -3,9 +3,10 @@ import cors from 'cors'
 import { createProductoRouter } from './Api/routes/ProductoRoute.js'
 import { createUserRoute } from './Api/routes/UserRoute.js'
 import { loginRouter } from './Api/routes/LoginRoutes.js'
+import { salesRouter } from './Api/routes/SalesRoute.js'
 import dotenv from 'dotenv/config.js'
 
-export const createApp = ({productoModel, userModel }) =>{
+export const createApp = ({productoModel, userModel, salesModel }) =>{
 
     const app = express()
     app.disable('x-powered-by')
@@ -17,6 +18,7 @@ export const createApp = ({productoModel, userModel }) =>{
     app.use('/productos', createProductoRouter({ productoModel }))
     app.use('/usuarios', createUserRoute({ userModel }))
     app.use('/login', loginRouter({ userModel }))
+    app.use('/sales',salesRouter({ salesModel }))
     
     
     app.listen(PORT, ()=>{

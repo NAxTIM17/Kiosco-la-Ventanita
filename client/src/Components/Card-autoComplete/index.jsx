@@ -24,7 +24,7 @@ function CardAutoComplete({products, func, filterText}){
                 {filtrarElemento().map((producto, index) => (
                     <li
                     key = {index} 
-                    onClick={(e) => setSelected(index)} 
+                    onClick={() => setSelected(index)} 
                     className={select === index ? "Search-Card-items-focus" : ""}
                     >
                     <span>{producto.nombre}</span>
