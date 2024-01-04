@@ -12,4 +12,13 @@ export class ProductoModel{
           throw error; // Puedes manejar el error de otra manera según tus necesidades
         }
       }
+      static async create({body}){
+        try{
+          const { nombre, descripcion, cantidad, precio } = body
+          const [product] = await connection.execute('INSERT INTO producto(nombre, descripcion, cantidad, precio) VALUES (?,?,?,?)', [nombre, descripcion, cantidad, precio])
+          return product
+        }catch(err){
+          console.log(err)
+        }
+      }
 }
