@@ -25,7 +25,7 @@ const columns = [
 ]
 function Purchases (){
 
-
+    console.log("rendering purchases...")
     const [item, setitem] = useState({})
     const [carrito, setCarrito] = useState([])
     const [table, setTable] = useState([])

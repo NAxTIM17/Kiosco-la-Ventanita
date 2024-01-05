@@ -2,6 +2,7 @@ import "./Home.css"
 import { useCookies } from 'react-cookie'
 
 function Home(){
+    console.log("rendering home....")
     const [cookies, useCookie, removeCookie] = useCookies()
     return(
         <>

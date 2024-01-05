@@ -28,7 +28,8 @@ const columns = [
     }
 ]
 function Sales (){
-
+    
+    console.log("rendering sales...")
 
     const [item, setitem] = useState({})
     const [carrito, setCarrito] = useState([])
@@ -40,16 +41,20 @@ function Sales (){
     //modal
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
+        //con este codigo evito que sales se re-renderice miles de veces.
+        useEffect(()=>{
+            const getProducts = async () => {
+                const { data } = await axios.get('http://localhost:8000/productos')
+                   setProductos( data )
+            }
+            getProducts()
+        },[])
 
-
-    axios.get('http://localhost:8000/productos')
-  .then((res)=>{
-    setProductos(res.data)
-  })
 
     //me causaba el error de no poder renderizar un componente por encima de otro.
     const AgarrarProducto = (productos) =>{
         useEffect(()=>{
+            //handleProduct()
             setitem(productos)
         },[productos])
     }

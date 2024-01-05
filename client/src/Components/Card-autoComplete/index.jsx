@@ -6,12 +6,11 @@ function CardAutoComplete({products, func, filterText}){
 
     const [select, setSelected] = useState(null)
 
-  const filtrarElemento = () => {
-    return products.filter((productos) =>
-    productos.nombre.toLowerCase().includes(filterText.toLowerCase()))
-  }
+
+    const filter = products.filter(product => product.nombre.toLowerCase().includes(filterText.toLowerCase()))
   
-  let objs = filtrarElemento()
+  
+  let objs = filter
   //aqui paso de info al padre desde el hijo
   func(objs[select])
   
@@ -21,7 +20,7 @@ function CardAutoComplete({products, func, filterText}){
         <Card className="Search-Card">
             <CardBody>
             <ul className="Search-Card-items">
-                {filtrarElemento().map((producto, index) => (
+                {filter.map((producto, index) => (
                     <li
                     key = {index} 
                     onClick={() => setSelected(index)} 

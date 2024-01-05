@@ -1,9 +1,8 @@
 import './inventory.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchInput from '../../Components/Search';
 import TableProducts from '../../Components/Table';
 import axios from 'axios'
-import { Button } from '@nextui-org/react';
 
 const columns = [
   {
@@ -24,26 +23,20 @@ const columns = [
       label: 'PRECIO'
   }
 ]
-function Inventory(){
-
-
+function Inventory (){
   const [filterText, setFilterText] = useState('')
   const [productos, setProductos] = useState([])
 
-  //axios
-  axios.get('http://localhost:8000/productos')
-  .then((res)=>{
-    setProductos(res.data)
-  })
+  useEffect(()=> {
+    const getProducts = async () =>{
+      const { data } = await axios.get('http://localhost:8000/productos')
+      setProductos(data)
+    }
+    getProducts()
+  },[])
 
-  
-
-  const filtrarElemento = () => {
-    return productos.filter((productos) =>
-    productos.nombre.toLowerCase().includes(filterText.toLowerCase()))
-  }
-
-  
+  //creo un array dependiendo de lo que se busque y se lo paso a la table
+  const filter = productos.filter(product => product.nombre.toLowerCase().includes(filterText.toLowerCase()))
   
   return(
     <>
@@ -56,7 +49,7 @@ function Inventory(){
             <SearchInput filterText={filterText} onFilterTextChange={setFilterText}/>
         </div>
         <div className="container-table">
-            <TableProducts Columns={columns} Items={filtrarElemento()} />
+            <TableProducts Columns={columns} Items={filter} />
         </div>
       </div>
     </div>
