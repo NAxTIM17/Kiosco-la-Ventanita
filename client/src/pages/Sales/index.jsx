@@ -8,8 +8,6 @@ import CardAutoComplete from "../../Components/Card-autoComplete"
 import TableProducts from "../../Components/Table"
 import axios from 'axios'
 
-//productos get
-
 
 const columns = [
     {
@@ -29,8 +27,6 @@ const columns = [
 ]
 function Sales (){
     
-    console.log("rendering sales...")
-
     const [item, setitem] = useState({})
     const [carrito, setCarrito] = useState([])
     const [table, setTable] = useState([])
@@ -44,6 +40,7 @@ function Sales (){
         //con este codigo evito que sales se re-renderice miles de veces.
         useEffect(()=>{
             const getProducts = async () => {
+                //productos get
                 const { data } = await axios.get('http://localhost:8000/productos')
                    setProductos( data )
             }
@@ -63,6 +60,7 @@ function Sales (){
         console.log(item)
         if(carrito.length === 0){
             if(item === undefined ){
+                //todo: validacion visual
                 console.log("seleccione un producto primero")
             }else{
                 let newItem = item
@@ -71,13 +69,13 @@ function Sales (){
                 setCarrito([...carrito, newItem])
             }
         }else{
+            //todo: validacion visual
             console.log("No se puede Agregar otro producto")
         }
     }
     //Muestra cada vez que table se actualiza
     useEffect(()=>{
         console.log("table actualizado")
-        console.log(table)
     },[setTable, table])
     //Funciona
     const AgregarTable = () =>{
@@ -86,12 +84,9 @@ function Sales (){
             //esta logica la tengo que cambiar pq no está clara y puede prestar a errores.
 
             carrito.forEach((elemento)=>{
-                //como el calor de mi campo cantidad es 0 hago este if para modificar su valor (mirar AgarrrarCarrito()).
+                //como el valor de mi campo cantidad es 0 hago este if para modificar su valor (mirar AgarrrarCarrito()).
             if(elemento.cantidad === 0){
                 elemento.cantidad = cantidades[0]
-                console.log("if")
-            }else{
-                console.log("fuera del if")   
             }})
 
 
@@ -99,13 +94,14 @@ function Sales (){
             //console.log(carrito)
             EliminarProducto(0)
         }else{
+            //todo: validacion visual
             console.log("Nada para mostrar")
         }
     }
-    //missing the index product
+
     const EliminarProducto = (index) =>{
         carrito.splice(index,1)
-        setCarrito([...carrito])//Actualizo el array de carrit
+        setCarrito([...carrito])//Actualizo el array de carrito.
     }
     //Done
     const AgarrarCantidad = (cantidad) =>{
@@ -138,7 +134,6 @@ function Sales (){
         console.log("venta...")
     }
 
-    //quiero que al darle click al icono de eliminar obtenga el index del array
     return(
         <>
         <div className="Sales-Title">

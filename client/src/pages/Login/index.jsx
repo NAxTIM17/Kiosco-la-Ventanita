@@ -9,7 +9,6 @@ import axios from 'axios'
 
 
 function Login (){
-    console.log("rendering login...")
     //state para el ojo de login
     const [ cookies, setCookie ] = useCookies()
     const [ isActive, setIsActive ] = useState(false)
