@@ -27,10 +27,11 @@ const columns = [
 ]
 function Sales (){
     
-    const [item, setitem] = useState({})
-    const [carrito, setCarrito] = useState([])
-    const [table, setTable] = useState([])
-    const [cantidades, setCantidad] = useState([])
+    const [ item, setitem ] = useState({})
+    const [ carrito, setCarrito ] = useState([])
+    const [ table, setTable ] = useState([])
+    const [ cantidades, setCantidad ] = useState([])
+    const [ limiteCantidad, setLimimteCantidad ] = useState(0)
     //Search
     const [filterText, setFilterText] = useState('')
     const [productos, setProductos] = useState([])
@@ -47,7 +48,7 @@ function Sales (){
             getProducts()
         },[])
 
-
+        console.log(limiteCantidad)
     //me causaba el error de no poder renderizar un componente por encima de otro.
     const AgarrarProducto = (productos) =>{
         useEffect(()=>{
@@ -67,6 +68,7 @@ function Sales (){
                 //aqui le agrego a item el campo cantidad y le doy el valor de 0.
                 newItem = {...newItem, cantidad: 0}
                 setCarrito([...carrito, newItem])
+                setLimimteCantidad(item.cantidad)
             }
         }else{
             //todo: validacion visual
@@ -103,15 +105,7 @@ function Sales (){
         carrito.splice(index,1)
         setCarrito([...carrito])//Actualizo el array de carrito.
     }
-    //Done
-    const AgarrarCantidad = (cantidad) =>{
-        useEffect(()=>{
-            let contador = 0
-            contador += cantidad
-            setCantidad([contador])
-        },[cantidad])
-    }
-    //funciona xd
+    
     const SumarNumeros = (array) =>{
          let contador = 0
         if(array.length > 0){
@@ -149,7 +143,7 @@ function Sales (){
                 <div className="Sales-item-card">
                     {
                         carrito.map((producto, index)=>(
-                            <ProductItem key={index} ProductName={`Nombre: ${producto.nombre}`} Price={`Precio: $${producto.precio}`} Func={AgarrarCantidad}/>
+                            <ProductItem key={index} ProductName={`Nombre: ${producto.nombre}`} Price={`Precio: $${producto.precio}`} limiteCantidad = {limiteCantidad} setCantidad={setCantidad}/>
                         ))
                     }
                 </div>
