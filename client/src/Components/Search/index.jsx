@@ -36,7 +36,7 @@ export default function SearchInput({filterText, onFilterTextChange}) {
  
   return (
       <>
-    <div className="w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white container-Search">
+    <div className="w-full h-full px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white container-Search">
       <Input
         label="Buscar"
         isClearable

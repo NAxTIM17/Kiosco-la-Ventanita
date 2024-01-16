@@ -1,6 +1,8 @@
 import "./Sales.css"
 import SearchInput from "../../Components/Search"
 import { Modals } from '../../Components/Modal/index'
+import { Alert } from "../../Components/Alert"
+import { useCookies } from 'react-cookie'
 import { Divider, Card, CardBody, Button, useDisclosure} from "@nextui-org/react"
 import ProductItem from "../../Components/Sales-Item"
 import { useEffect, useState } from "react"
@@ -26,17 +28,23 @@ const columns = [
     }
 ]
 function Sales (){
-    
+    //cookies
+    const [ cookies, setCookie ] = useCookies()
     const [ item, setitem ] = useState({})
     const [ carrito, setCarrito ] = useState([])
     const [ table, setTable ] = useState([])
     const [ cantidades, setCantidad ] = useState([])
     const [ limiteCantidad, setLimimteCantidad ] = useState(0)
+    const [ date, setDate ] = useState('')
+    const [ saleState, setSaleState ] = useState(false)
     //Search
     const [filterText, setFilterText] = useState('')
     const [productos, setProductos] = useState([])
     //modal
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    //Alert
+    const [ titleAlert, setTitleAlert ] = useState('')
+    const [ typeAlert, setTypeAlert ] = useState(null)
 
         //con este codigo evito que sales se re-renderice miles de veces.
         useEffect(()=>{
@@ -47,8 +55,7 @@ function Sales (){
             }
             getProducts()
         },[])
-
-        console.log(limiteCantidad)
+        console.log(date.replace(/-/g, '/'))
     //me causaba el error de no poder renderizar un componente por encima de otro.
     const AgarrarProducto = (productos) =>{
         useEffect(()=>{
@@ -88,7 +95,7 @@ function Sales (){
             carrito.forEach((elemento)=>{
                 //como el valor de mi campo cantidad es 0 hago este if para modificar su valor (mirar AgarrrarCarrito()).
             if(elemento.cantidad === 0){
-                elemento.cantidad = cantidades[0]
+                elemento.cantidad = cantidades
             }})
 
 
@@ -124,19 +131,53 @@ function Sales (){
         setTable([...table])
     }
 
-    const handleSales = () =>{
-        console.log("venta...")
+    const handleSales = async () => {
+        const {idUser} = cookies
+        console.log(idUser)
+        table.forEach(async(venta) => {
+            try {
+                const response = await axios.post('http://localhost:8000/sales/sale', {
+                    idProducto : venta.id,
+                    idUsuario : idUser,
+                    cantidad : venta.cantidad,
+                    total: venta.cantidad * venta.precio,
+                    fecha: date.replace(/-/g, '/')
+                })
+                if( response.data.message === 'the sale was successfully registered' ){
+                    setSaleState(true)
+                    setTitleAlert(response.data.message)
+                    setTypeAlert(true)
+                    LimpiarTable()
+                }else{
+                    setSaleState(true)
+                    setTitleAlert(response.data.message)
+                    setTypeAlert(false)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        
+        })
     }
 
+    
     return(
         <>
+        <Alert type={`${typeAlert ? "success" : "danger"}`} title={titleAlert} showState={saleState} setSaleState={setSaleState}/>
         <div className="Sales-Title">
             <h1>VENTAS</h1>
         </div>
         <div className="Sales">
             <div className="Sales-container">
                 <div className="Sales-items">
-                    <SearchInput filterText = {filterText} onFilterTextChange = {setFilterText}  />
+                    <div className="SearchBar-container">
+                        <div className="SearchBar">
+                            <SearchInput filterText = {filterText}  onFilterTextChange = {setFilterText}  />
+                        </div>
+                        <div className="DatePicker-container">
+                            <input className="DatePicker" type="date" onChange={(e) => setDate(e.target.value)}/>
+                        </div>
+                    </div>
                     <CardAutoComplete func = {AgarrarProducto} products = {productos} filterText = {filterText}/>
                     <Button color="primary" variant="shadow" onClick = {()=>{AgregarCarrito()}}>Añadir</Button>
                     <Divider/>

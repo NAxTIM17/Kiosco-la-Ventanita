@@ -18,6 +18,7 @@ export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, button
                 >
                 <ModalContent>
                 {(onClose) => (
+                    console.log(`soy el onClose ${onClose}`),
                 <>
                 <ModalHeader className="flex flex-col gap-1">{modalHeader}</ModalHeader>
                 <ModalBody>
@@ -27,7 +28,12 @@ export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, button
                     <Button color="primary" variant="light" onPress={onClose}>
                     {buttonClose}
                     </Button>
-                    <Button className="text-white" color={buttonActionColor} onPress={Action}>
+                    <Button className="text-white" color={buttonActionColor} onClick={() => {
+                        Action()
+                        setTimeout(()=>[
+                            onClose()
+                        ],200)
+                    }}>
                     {buttonAction}
                     </Button>
                 </ModalFooter>

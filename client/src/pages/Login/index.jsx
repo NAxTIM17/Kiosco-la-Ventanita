@@ -19,7 +19,7 @@ function Login (){
     const [password, setPassword] = useState('')
     
     const navigate = useNavigate()
-
+    console.log(cookies)
     //logica de autentificacion
     const HandleLogin = async () => {
         try {
@@ -29,7 +29,10 @@ function Login (){
           });
       
           if (response.data) {
+            const { id } = response.data
+            console.log(id)
             setCookie('userInfo', user);
+            setCookie('idUser', id)
             navigate('/');
           }
         } catch (error) {

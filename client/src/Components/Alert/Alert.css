@@ -1,0 +1,86 @@
+.Alert-container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+    height: 50px;
+}
+.Alert-container-success-show{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    font-weight: 500;
+    color: white;
+    gap: 15px;
+    width: 50%;
+    height: 70px;
+    background-color: rgb(106, 216, 102);
+    position: absolute;
+    border-radius: 10px;
+
+    transition-property: margin-top;
+    transition-duration: 1s;
+}
+.Alert-container-danger-show{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    font-weight: 500;
+    color: white;
+    gap: 15px;
+    width: 50%;
+    height: 70px;
+    background-color: rgb(243, 78, 78);
+    position: absolute;
+    border-radius: 10px;
+
+    transition-property: margin-top;
+    transition-duration: 1s;
+}
+.Alert-container-danger-hidden{
+    margin-top: -300px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    font-weight: 500;
+    color: white;
+    gap: 15px;
+    width: 50%;
+    height: 70px;
+    background-color: rgb(243, 78, 78);
+    position: absolute;
+    border-radius: 10px;
+
+    transition-property: margin-top;
+    transition-duration: 1s;
+}
+.Alert-container-success-hidden{
+    margin-top: -300px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    font-weight: 500;
+    color: white;
+    gap: 15px;
+    width: 50%;
+    height: 70px;
+    background-color: rgb(106, 216, 102);
+    position: absolute;
+    border-radius: 10px;
+
+    transition-property: margin-top;
+    transition-duration: 1s;
+}
+.icon-Alert{
+    margin-left: 10px;
+}

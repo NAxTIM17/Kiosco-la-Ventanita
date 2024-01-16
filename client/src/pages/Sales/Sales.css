@@ -83,3 +83,29 @@
     display: flex;
     justify-content: space-between;
 }
+.SearchBar-container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    
+}
+.DatePicker-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    width: 20%;
+    border-radius: 15px;
+    color: #a5a5a5;
+    padding: 10px;
+}
+.SearchBar{
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 90%;
+}
+.DatePicker{
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+}
