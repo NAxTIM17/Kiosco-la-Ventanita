@@ -17,6 +17,12 @@ zbody{
   --brand-second-color: hsl(211, 70%, 26%);  
   --brand-base-color: hsl(212, 75%, 16%);
 
+
+  --brand-background: rgb(238, 238, 238);
+  --brand-dark: rgb(48, 56, 65);
+  --brand-second-dark: rgb(58, 71, 80);
+  --brand-color: rgb(246, 201, 14);
+
 }
 #root{
   min-height: 100vh;
