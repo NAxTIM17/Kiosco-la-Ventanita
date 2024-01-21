@@ -14,7 +14,6 @@ export const createApp = ({productoModel, userModel, salesModel }) =>{
     app.use(cors())
     
     const PORT = process.env.PORT ?? 1234
-    console.log(process.env.SALT)
     app.use('/productos', createProductoRouter({ productoModel }))
     app.use('/usuarios', createUserRoute({ userModel }))
     app.use('/login', loginRouter({ userModel }))

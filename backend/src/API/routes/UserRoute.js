@@ -9,6 +9,8 @@ export const createUserRoute = ({userModel}) =>{
 
     userRoute.get('/', UserController.getAll)
     userRoute.post('/', UserController.create)
+    userRoute.post('/update', UserController.updatePassword)
+
 
     return userRoute
 

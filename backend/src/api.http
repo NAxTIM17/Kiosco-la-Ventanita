@@ -11,18 +11,26 @@ Content-Type: application/json
     "precio" : 500.00
 }
 
-
- 
-### 
+###  
 GET http://localhost:8000/usuarios
+
+###
+POST http://localhost:8000/usuarios/update
+Content-Type: application/json
+
+{
+    "userName" : "admin",
+    "password" : "123"
+}
+
 
 ###  
 POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "userName" : "tanito",
-    "userPassword" : "tanito"
+    "userName" : "admin",
+    "userPassword" : "123"
 }
 
 ###
@@ -31,11 +39,24 @@ GET http://localhost:8000/sales
 ###
 POST http://localhost:8000/sales/sale
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA1NzA5ODQzfQ.bwPxEBpGdYlHrydj4RQRIGueq2x3JzIlkjW2g8uXmdQ
 
 {
-    "idProducto" : 4,
-    "idUsuario" : 7,
-    "cantidad" : 5,
-    "total" : 525.00,
-    "fecha" : "2024/1/4"
+    "idProducto" : 1,
+    "idUsuario" : null,
+    "cantidad" : 8,
+    "total" : 846.00,
+    "fecha" : "2024/1/18"
+}
+
+### 
+POST http://localhost:8000/usuarios
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA1Nzg2Nzc0fQ.lH0TWmNLeUsvy1jjmrOtTGHA87Mq9yVOgK8-xNiSlPM
+
+
+{
+    "usuario" : "tanito",
+    "contraseña" : "tanito123",
+    "rol" : "vendedor"
 }

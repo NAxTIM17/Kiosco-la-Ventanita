@@ -13,14 +13,16 @@ export class UserModel{
         }
     }
 
-    static async create({input}){
+    static async create({body}){
         try {
             const {
                 usuario,
-                contraseña
-            } = input 
+                contraseña,
+                rol
+            } = body
             const newPassword = await PasswordEncrypt(contraseña)
-            await connection.query('INSERT INTO usuario(usuario, contraseña) VALUES (?,?);', [usuario, newPassword])
+            const result = await connection.query('INSERT INTO usuario(usuario, contraseña, rol) VALUES (?,?,?);', [usuario, newPassword, rol])
+            return result
         } catch (error) {
             console.error('Error al insertar un usuario:', error);
           throw error;
@@ -35,6 +37,20 @@ export class UserModel{
             console.error('Error al obtener  un usuario:', error);
             throw error
         }
+    }
+
+    static async updatePassword({body}){
+        try{
+            console.log(body)
+            const { password, userName } = body
+            const hashedPassword = await PasswordEncrypt(password)
+            const response = await connection.execute('UPDATE usuario SET contraseña = ? WHERE usuario = ?',[hashedPassword, userName])
+            console.log(response)
+            return response
+        }catch(err){
+            console.log(err)
+        }
+
     }
 
 }

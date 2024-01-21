@@ -1,4 +1,5 @@
 import { schemaSales } from "../../middlewares/Schemas.js"
+import jwt from 'jsonwebtoken'
 
 export class salesController {
         constructor({salesModel}){
@@ -13,8 +14,8 @@ export class salesController {
 
         create = async (req, res) => {
             const body = req.body
-            const {error} =  schemaSales.validate(body)
-            if(error){
+            const { error } =  schemaSales.validate(body)
+            if( error ){
                 res.json({message: error.message})
             }else{
                 const sale = await this.salesModel.create({body})

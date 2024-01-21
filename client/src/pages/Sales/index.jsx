@@ -130,19 +130,22 @@ function Sales (){
         table.splice(0,1)
         setTable([...table])
     }
-
     const handleSales = async () => {
-        const {idUser} = cookies
-        console.log(idUser)
         table.forEach(async(venta) => {
             try {
+                const {Token} = cookies
                 const response = await axios.post('http://localhost:8000/sales/sale', {
                     idProducto : venta.id,
-                    idUsuario : idUser,
+                    idUsuario : null,
                     cantidad : venta.cantidad,
                     total: venta.cantidad * venta.precio,
                     fecha: date.replace(/-/g, '/')
-                })
+                },{
+                    headers:{
+                        'Authorization': `Bearer ${Token}`,
+                         'Content-Type': 'application/json',
+                    }
+              })
                 if( response.data.message === 'the sale was successfully registered' ){
                     setSaleState(true)
                     setTitleAlert(response.data.message)

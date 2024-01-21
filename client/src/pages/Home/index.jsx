@@ -3,6 +3,8 @@ import { useCookies } from 'react-cookie'
 
 function Home(){
     const [cookies, useCookie, removeCookie] = useCookies()
+    const {rol} = cookies
+    console.log(cookies.rol)
     return(
         <>
             <div className="Container-Home">

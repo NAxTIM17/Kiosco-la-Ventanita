@@ -28,36 +28,70 @@ function SideBar(){
               </div>
               <div className="navBar-buttons">  
                 <div className="navBar-buttons-pages">
-                <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/")
-                  }}>
-                    <FontAwesomeIcon icon={faHouse} />
-                    Inicio
-                </Button>
+
+
                   <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/sales")
-                  }}>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                    Ventas
+                      navigate("/")
+                    }}>
+                      <FontAwesomeIcon icon={faHouse} />
+                      Inicio
                   </Button>
-                  <Button className="navBar-button" color="primary" variant="shadow"  onClick={()=>{
-                    navigate("/purchases")
-                  }}>
-                    <FontAwesomeIcon icon={faBasketShopping} />
-                    Compras
-                  </Button>
-                  <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
-                    navigate("/inventory")
-                  }}>
-                    <FontAwesomeIcon icon={faBoxOpen} />
-                    Inventario
-                  </Button>
+
+                    {cookies.rol === "administrador" ? (
+                      <>
+                        <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
+                          navigate("/sales")
+                        }}>
+                          <FontAwesomeIcon icon={faCartShopping} />
+                          Ventas
+                        </Button>
+
+                        <Button className="navBar-button" color="primary" variant="shadow"  onClick={()=>{
+                          navigate("/purchases")
+                        }}>
+                          <FontAwesomeIcon icon={faBasketShopping} />
+                          Compras
+                        </Button>
+                        <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
+                          navigate("/inventory")
+                        }}>
+                          <FontAwesomeIcon icon={faBoxOpen} />
+                          Inventario
+                        </Button>
+                      </>
+                    ) : ""}
+                    {
+                      cookies.rol === "vendedor" ? (
+                        <>
+                        <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
+                          navigate("/sales")
+                        }}>
+                          <FontAwesomeIcon icon={faCartShopping} />
+                          Ventas
+                        </Button>
+
+                        <Button className="navBar-button" color="primary" variant="shadow" onClick={()=>{
+                        navigate("/inventory")
+                      }}>
+                        <FontAwesomeIcon icon={faBoxOpen} />
+                        Inventario
+                      </Button>
+                        </>
+                      ):
+                      (
+                        ""
+                      )
+                    }
+                  
+                  
+
                 </div>
                 <div className="navBar-Button-logout">
                   <Button className="navBar-button" color="danger" variant="shadow" onClick={onOpen}>
                     <FontAwesomeIcon icon={faArrowRightFromBracket}/>
                     Log Out
                   </Button>
+
                 </div>
               </div>
             </div>
