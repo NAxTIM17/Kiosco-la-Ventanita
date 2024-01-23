@@ -1,23 +1,39 @@
 import './Modal.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 export function MyModal ({OpenModal, setOpenModal, children, btnCloseText, btnAccionText, Accion}) {
 
+    const [stateAux, setStateAux] = useState(false)
+
+    //console.log(`soy el Open Modal ${OpenModal}`)
+    
+    useEffect(()=>{
+        setStateAux(OpenModal)
+    },[OpenModal])
+    
+    //console.log(`soy el auxiliar ${stateAux}`)
     const handleClose = () =>{
-        setOpenModal(!OpenModal )
+        setStateAux(!OpenModal)
+        setTimeout(()=>{
+            setOpenModal(!OpenModal )
+        },300)
     }
     const handleAccion = () => {
         Accion()
-        setOpenModal(!OpenModal)
+        setStateAux(!OpenModal)
+        setTimeout(()=>{
+            setOpenModal(!OpenModal )
+        },300)
     }
+
 
     return(
         <>
             {
                 OpenModal ? 
                 <div className='modal-container'>
-                    <div className='modal'>
+                    <div className={stateAux ? "modal" : "modal-close"}>
                         <div className='modal-content'>
                             {children}
                         </div>

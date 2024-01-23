@@ -1,23 +1,18 @@
-.Layout_Content{
-  margin: 24px 16px;
-  border-radius: 5px;
-  padding: 24px;
-  background: rgba(204, 204, 204, 0.438);
-}
 .Layout_Container{
   height: 100vh;
 }
 .containerDiv{
   display: flex;
   flex-direction: row;
+  background-color: var(--brand-dark);
 }
 .Container-BusinessRouter{
   padding: 2rem;
-  margin: 20px;
-  border-radius: 2rem;
+  margin: 10px;
+  border-radius: .5rem;
   width: 100%;
   overflow: hidden;
-  background-color: var(--brand-fourth-color);
+  background-color: var(--brand-background);
 }
 .SideBar-container{
   display: flex;

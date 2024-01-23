@@ -15,14 +15,12 @@ function Purchases (){
         if(openModal) return
         setFooter(!footer)
     }
-    const handleHola = () =>{
-        console.log("holaaa")
-    }
-    console.log(openModal)
+    
+    //<MyModal OpenModal={openModal} setOpenModal={setOpenModal} Accion={handleHola} btnAccionText={"Agregar"} btnCloseText={"Cerrar"} />
+
     return(
         <>
         <div className="purchases-container">
-            <MyModal OpenModal={openModal} setOpenModal={setOpenModal} Accion={handleHola} btnAccionText={"Agregar"} btnCloseText={"Cerrar"} />
             <div className="purchase-header">
                 <div className="search-container">
                     <FontAwesomeIcon className='icon-Search' icon={faSearch} />
@@ -49,18 +47,18 @@ function Purchases (){
                     </>
                 }
                 <div className='products'>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
-                    <Card setOpenModal={setOpenModal} openModal={openModal}/>
+                    <Card text={"Card-01"}/>
+                    <Card text={"Card-02"}/>
+                    <Card text={"Card-03"}/>
+                    <Card text={"Card-04"}/>
+                    <Card text={"Card-05"}/>
+                    <Card text={"Card-06"}/>
+                    <Card text={"Card-07"}/>
+                    <Card text={"Card-08"}/>
+                    <Card text={"Card-09"}/>
+                    <Card text={"Card-10"}/>
+                    <Card text={"Card-11"}/>
+                    <Card text={"Card-12"}/>
                 </div>
             </div>
             <div className={`purchase-footer-${footer ? "" : "hidden"}`} onClick={footer ? "" : handleFooter}>
