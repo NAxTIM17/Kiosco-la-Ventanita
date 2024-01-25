@@ -6,12 +6,12 @@
     padding: 1rem;
     text-align: center;
     flex-direction: column;
-    flex: 1 1 100vh;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 
 }
 .navBar-buttons{
+    width: 100%;
     height: 93%;
     display: flex;
     flex-direction: column;
