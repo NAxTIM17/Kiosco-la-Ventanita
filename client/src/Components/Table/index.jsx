@@ -1,11 +1,11 @@
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react"
 
 
-function TableProducts ({Columns, Items}){
+function TableProducts ({Columns, Items, className}){
     return(
         <Table
         isHeaderSticky
-        className="Table-table"
+        className={className ? className : ""}
         aria-label="Example table with client side sorting"
         >
             <TableHeader columns={Columns}>

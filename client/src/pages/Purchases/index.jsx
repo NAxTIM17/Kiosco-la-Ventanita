@@ -10,6 +10,7 @@ import { MyModal } from "../../Components/MyModal";
 function Purchases() {
   const [footer, setFooter] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [item, setItem] = useState(null)
 
   const handleFooter = () => {
     if (selectedId) return;
@@ -18,51 +19,59 @@ function Purchases() {
   const items = [
     {
       title: "Card01",
+      price: "$1000",
+    },
+    {
+      title: "Card02",
+      price: "$2000",
+    },
+    {
+      title: "Card03",
       price: "$3000",
     },
     {
-      title: "Card02",
+      title: "Card04",
       price: "$4000",
     },
     {
-      title: "Card02",
-      price: "$4000",
+      title: "Card05",
+      price: "$5000",
     },
     {
-      title: "Card02",
-      price: "$4000",
+      title: "Card06",
+      price: "$6000",
     },
     {
-      title: "Card02",
-      price: "$4000",
+      title: "Card07",
+      price: "$7000",
     },
     {
-      title: "Card02",
-      price: "$4000",
+      title: "Card08",
+      price: "$8000",
     },
     {
-      title: "Card02",
-      price: "$4000",
-    },
-    {
-      title: "Card02",
-      price: "$4000",
-    },
-    {
-      title: "Card02",
-      price: "$4000",
+      title: "Card09",
+      price: "$9000",
     },
 
   ];
 
-  
   return (
     <>
       <div className="purchases-container">
             <AnimatePresence>
                 {
                     selectedId && (
-                        <MyModal selectedId={selectedId} setSelectedId={setSelectedId} btnAccionText={"Aceptar"} btnCloseText={"Cerrar"}/>
+                        <MyModal selectedId={selectedId} setSelectedId={setSelectedId} btnAccionText={"Aceptar"} btnCloseText={"Cerrar"}>
+                          <>
+                            <h1>
+                              {item.title}
+                            </h1>
+                            <h1>
+                              {item.price}
+                            </h1>
+                          </>
+                        </MyModal>
                     )
                 }
             </AnimatePresence>
@@ -87,8 +96,12 @@ function Purchases() {
             {items.map((item, key) => (
               <Card
                 itemId={key + 1}
-                onClick={() => setSelectedId(key + 1)}
+                onClick={() => {
+                  setItem(item)
+                  setSelectedId(key + 1)
+                }}
                 text={item.title}
+                price={item.price}
               />
             ))}
             

@@ -12,43 +12,26 @@
 }
 .modal{
     position: absolute;
-    width: 800px;
+    width: 600px;
     height: 300px;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
     padding: 10px;
+    overflow: hidden;
 }
 .modal-buttons{
     display: flex;
     flex-direction: row-reverse;
     gap: 15px;
 }
-.btn-close{
-    height: 40px;
-    width: 100px;
+.buttons{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-    border-radius: 10px;
-    font-weight: 500;
-    background-color: var(--brand-second-dark);
-}
-.btn-accion{
-    height: 40px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-    border-radius: 10px;
-    font-weight: 500;
-    background-color: var(--brand-color);
+    width: 300px;
 }

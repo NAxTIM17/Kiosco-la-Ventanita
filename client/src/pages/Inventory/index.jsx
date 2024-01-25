@@ -41,15 +41,12 @@ function Inventory (){
   return(
     <>
     <div className="inventory-container">
-      <div className="inventory-title">
-        <h1>INVETARIO</h1>
-      </div>
       <div className="inventory-container-table">
         <div className="container-table-search">
             <SearchInput filterText={filterText} onFilterTextChange={setFilterText}/>
         </div>
         <div className="container-table">
-            <TableProducts Columns={columns} Items={filter} />
+            <TableProducts className="table" Columns={columns} Items={filter} />
         </div>
       </div>
     </div>

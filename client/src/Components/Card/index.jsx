@@ -2,7 +2,7 @@ import './Card.css'
 import { useState } from 'react'
 import {motion} from 'framer-motion'
 
-export function Card({text, itemId, onClick}){
+export function Card({text, itemId, onClick, price}){
 
     return(
         <>
@@ -19,7 +19,7 @@ export function Card({text, itemId, onClick}){
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                     </motion.p>
                     <motion.h2 className='price'>
-                        $3000
+                        {price}
                     </motion.h2>
                 </motion.div>
             </motion.div>
