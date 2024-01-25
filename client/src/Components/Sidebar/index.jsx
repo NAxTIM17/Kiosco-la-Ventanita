@@ -28,11 +28,11 @@ function SideBar() {
   return (
     <>
       <div className="navBar">
-        <div className="navBar-Title">
-          <FontAwesomeIcon icon={faShop} className="nav-bar-icon" />
-          <h1>Kiosco la Ventanita</h1>
-        </div>
         <div className="navBar-buttons">
+          <div className="navBar-Title">
+            <FontAwesomeIcon icon={faShop} className="nav-bar-icon" />
+            <h1>Kiosco la Ventanita</h1>
+          </div>
           <div className="navBar-buttons-pages">
             <MyButton
               name={"Inicio"}
