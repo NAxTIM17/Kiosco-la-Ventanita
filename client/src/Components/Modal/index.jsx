@@ -18,7 +18,6 @@ export function Modals ({isOpen, onOpenChange, modalHeader, buttonAction, button
                 >
                 <ModalContent>
                 {(onClose) => (
-                    console.log(`soy el onClose ${onClose}`),
                 <>
                 <ModalHeader className="flex flex-col gap-1">{modalHeader}</ModalHeader>
                 <ModalBody>

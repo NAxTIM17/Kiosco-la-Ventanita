@@ -261,13 +261,7 @@ function Sales() {
                 />
               </div>
             </div>
-            <Button
-              className="btn-limpiar-tabla"
-              color="danger"
-              variant="shadow"
-            >
-              Limpiar Tabla
-            </Button>
+           
             <div className="SalesDivider">
               <Divider />
             </div>
