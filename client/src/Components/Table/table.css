@@ -1,0 +1,6 @@
+.table-row{
+    color: rgba(255, 43, 43, 0.514);
+    cursor: pointer;
+    user-select: none;
+    margin: 5px;
+}

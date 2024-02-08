@@ -28,14 +28,14 @@ function ProductItem({ProductName, Price, setCantidad, limiteCantidad}){
             <CardBody>
                 <div className="CardBody">
                   <div className="CardButtons">
-                        <Button color="default" onClick={handleClickAdd}>
-                            +
+                        <Button color="default" onClick={handleClickSub}>
+                            -
                         </Button>
                         <div className="CardNumber">
                             {add}
                         </div>
-                        <Button color="default" onClick={handleClickSub}>
-                            -
+                        <Button color="default" onClick={handleClickAdd}>
+                            +
                         </Button>
                  </div>
                         <div className="CardDivider">
