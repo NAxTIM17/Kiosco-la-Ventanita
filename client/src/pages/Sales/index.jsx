@@ -11,7 +11,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import ProductItem from "../../Components/Sales-Item";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardAutoComplete from "../../Components/Card-autoComplete";
 import TableProducts from "../../Components/Table";
 import axios from "axios";
@@ -39,7 +39,7 @@ const columns = [
 function Sales() {
   //cookies
   const [cookies, setCookie] = useCookies();
-  const [item, setitem] = useState({});
+  const [item, setItem] = useState(null);
   const [carrito, setCarrito] = useState([]);
   const [table, setTable] = useState([]);
   const [cantidades, setCantidad] = useState([]);
@@ -54,9 +54,7 @@ function Sales() {
   //Alert
   const [titleAlert, setTitleAlert] = useState("");
   const [typeAlert, setTypeAlert] = useState(null);
-  //itemId
 
-  //con este codigo evito que sales se re-renderice miles de veces.
   useEffect(() => {
     const getProducts = async () => {
       //productos get
@@ -65,20 +63,12 @@ function Sales() {
     };
     getProducts();
   }, []);
-
-  //me causaba el error de no poder renderizar un componente por encima de otro.
-  const AgarrarProducto = (productos) => {
-    useEffect(() => {
-      //handleProduct()
-      setitem(productos);
-    }, [productos]);
-  };
-  //Funciona / faltaria insertarle el key: numero dependiendo de la cantidad de elementos que tenga el carrito.
   const AgregarCarrito = () => {
     if (carrito.length === 0) {
-      if (item === undefined) {
-        //todo: validacion visual
-        console.log("seleccione un producto primero");
+      if (item === null) {
+        setSaleState(true)
+        setTypeAlert(false)
+        setTitleAlert("SELECCIONE un producto para añadirlo")
       } else {
         let newItem = item;
         //aqui le agrego a item el campo cantidad y le doy el valor de 0.
@@ -87,20 +77,15 @@ function Sales() {
         setLimimteCantidad(item.cantidad);
       }
     } else {
-      //todo: validacion visual
-      console.log("No se puede Agregar otro producto");
+      setSaleState(true)
+      setTypeAlert(false)
+      setTitleAlert("No se puede agregar otro producto!!")
     }
   };
-  //Muestra cada vez que table se actualiza
-  useEffect(() => {
-    console.log("table actualizado");
-  }, [setTable, table]);
-  //Funciona
   const AgregarTable = () => {
     if (carrito.length > 0) {
       //logica de agregado a la tabla y las cantidades.
       //esta logica la tengo que cambiar pq no está clara y puede prestar a errores.
-
       carrito.forEach((elemento) => {
         //como el valor de mi campo cantidad es 0 hago este if para modificar su valor (mirar AgarrrarCarrito()).
         if (elemento.cantidad === 0) {
@@ -109,20 +94,18 @@ function Sales() {
       });
 
       setTable([...table, ...carrito]);
-      //console.log(carrito)
       EliminarProducto(0);
       //test
     } else {
       //todo: validacion visual
-      console.log("Nada para mostrar");
+      setSaleState(true)
+      setTypeAlert(false)
+      setTitleAlert("Debe AÑADIR un producto Primero")
     }
   };
-
-  const EliminarProducto = (index) => {
-    carrito.splice(index, 1);
-    setCarrito([...carrito]); //Actualizo el array de carrito.
+  const EliminarProducto = () => {
+    setCarrito([]); //Actualizo el array de carrito.
   };
-
   const SumarNumeros = (array) => {
     let contador = 0;
     if (array.length > 0) {
@@ -135,45 +118,51 @@ function Sales() {
 
     return contador;
   };
-
   const LimpiarTodaLaTable = () => {
-    setTable([""]);
+    setTable([]);
   };
   const handleSales = async () => {
-    table.forEach(async (venta) => {
-      try {
-        const { Token } = cookies;
-        const response = await axios.post(
-          "http://localhost:8000/sales/sale",
-          {
-            idProducto: venta.id,
-            idUsuario: null,
-            cantidad: venta.cantidad,
-            total: venta.cantidad * venta.precio,
-            fecha: date.replace(/-/g, "/"),
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${Token}`,
-              "Content-Type": "application/json",
+    if(table.length > 0){
+      table.forEach(async (venta) => {
+        try {
+          const { Token } = cookies;
+          const response = await axios.post(
+            "http://localhost:8000/sales/sale",
+            {
+              idProducto: venta.id,
+              idUsuario: null,
+              cantidad: venta.cantidad,
+              total: venta.cantidad * venta.precio,
+              fecha: date.replace(/-/g, "/"),
             },
+            {
+              headers: {
+                Authorization: `Bearer ${Token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (response.data.message === "the sale was successfully registered") {
+            setSaleState(true);
+            setTitleAlert(response.data.message);
+            setTypeAlert(true);
+            LimpiarTodaLaTable();
+          } else {
+            setSaleState(true);
+            setTitleAlert(response.data.message);
+            setTypeAlert(false);
           }
-        );
-        if (response.data.message === "the sale was successfully registered") {
-          setSaleState(true);
-          setTitleAlert(response.data.message);
-          setTypeAlert(true);
-          LimpiarTodaLaTable();
-        } else {
-          setSaleState(true);
-          setTitleAlert(response.data.message);
-          setTypeAlert(false);
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-    });
+      });
+    }else{
+        setSaleState(true)
+        setTitleAlert("Debe agregar al menos un producto para venderlo!")
+        setTypeAlert(false)
+    }
   };
+
   return (
     <>
       <Alert
@@ -204,13 +193,13 @@ function Sales() {
               </div>
             </div>
             <CardAutoComplete
-              func={AgarrarProducto}
+              setItem={setItem}
+              item={item}
               products={productos}
               filterText={filterText}
             />
             <Button
               color="primary"
-              variant="shadow"
               onClick={() => {
                 AgregarCarrito();
               }}
@@ -232,7 +221,6 @@ function Sales() {
             <div className="Sales-button">
               <Button
                 color="danger"
-                variant="shadow"
                 onClick={() => {
                   EliminarProducto();
                 }}
@@ -241,7 +229,6 @@ function Sales() {
               </Button>
               <Button
                 color="primary"
-                variant="shadow"
                 className=""
                 onClick={() => {
                   AgregarTable();
@@ -275,7 +262,6 @@ function Sales() {
             <div className="Sell-button-container">
               <Button
                 color="success"
-                variant="shadow"
                 onClick={onOpen}
                 className="sell-button"
               >

@@ -1,4 +1,3 @@
-
 .Sales{
     padding: 10px;
     height: 100%;
@@ -61,8 +60,6 @@
     margin: 0;
 }
 .Sales-item-card{
-    overflow: scroll !important;
-    overflow-x: hidden !important;
     max-height: 200px;
 }
 .SalesDivider{

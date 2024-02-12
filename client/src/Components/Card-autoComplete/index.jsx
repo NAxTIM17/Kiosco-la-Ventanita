@@ -2,18 +2,11 @@ import { useState } from "react";
 import {Card, CardBody} from "@nextui-org/react";
 import "./CardAutoComplete.css"
 
-function CardAutoComplete({products, func, filterText}){
-
-    const [select, setSelected] = useState(null)
-
-
+function CardAutoComplete({products, setItem, item,  filterText}){
     const filter = products.filter(product => product.nombre.toLowerCase().includes(filterText.toLowerCase()))
-  
-  
-  let objs = filter
-  //aqui paso de info al padre desde el hijo
-  func(objs[select])
-  
+
+
+    
 
     return(
         <>
@@ -23,8 +16,8 @@ function CardAutoComplete({products, func, filterText}){
                 {filter.map((producto, index) => (
                     <li
                     key = {index} 
-                    onClick={() => setSelected(index)} 
-                    className={select === index ? "Search-Card-items-focus" : ""}
+                    onClick={() => setItem(producto)} 
+                    className={item?.nombre === producto.nombre ? "Search-Card-items-focus" : ""}
                     >
                     <span>{producto.nombre}</span>
                 </li>
