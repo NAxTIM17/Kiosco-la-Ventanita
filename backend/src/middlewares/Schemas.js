@@ -13,6 +13,6 @@ export const schemaSales = joi.object({
     idUsuario: joi.number().integer().positive().min(1).max(9999).required(),
     idProducto: joi.number().integer().positive().min(1).max(9999).required(),
     cantidad: joi.number().integer().positive().min(1).max(9999).required(),
-    total: joi.number().precision(2).positive().min(100).max(99999).required(),
+    total: joi.number().precision(2).positive().min(10).max(99999).required(),
     fecha: joi.date()
 })
