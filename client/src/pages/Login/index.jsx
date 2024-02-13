@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEyeSlash, faEye} from '@fortawesome/free-solid-svg-icons';
+import { LoginContext } from '../../Components/loginContext'
+import { useContext } from 'react'
 import axios from 'axios'
 
 
@@ -13,12 +15,17 @@ function Login (){
     const [ cookies, setCookie ] = useCookies()
     const [ isActive, setIsActive ] = useState(false)
     const [ invalid, setInvalid ] = useState(false)
+
+    //context
+    const {logged, setLogged} = useContext(LoginContext)
     
     //user and password
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
     
     const navigate = useNavigate()
+
+    console.log(logged)
     //logica de autentificacion
     const HandleLogin = async () => {
         try {
@@ -29,6 +36,7 @@ function Login (){
       
           if (response.data) {
             const { token, rol, userName } = response.data
+            setLogged(true)
             setCookie('userInfo', userName);
             setCookie('Token', token)
             setCookie('rol', rol)

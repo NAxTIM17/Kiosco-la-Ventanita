@@ -14,15 +14,21 @@ import {
 import { MyButton } from "../MyButton/Index";
 import { Modals } from "../Modal";
 import { useDisclosure } from "@nextui-org/react";
+import { useContext } from "react";
+import { LoginContext } from "../loginContext";
 
 function SideBar() {
   const navigate = useNavigate();
 
   const [cookies, setCookie, removeCookie] = useCookies();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {logged, setLogged} = useContext(LoginContext)
 
   const handleLogOut = () => {
+    setLogged(false)
     removeCookie("userInfo");
+    removeCookie("Token");
+    removeCookie("rol");
   };
 
   return (
