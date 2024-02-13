@@ -7,8 +7,7 @@ import Inventory from '../../pages/Inventory'
 import Purchases from '../../pages/Purchases'
 import Login from '../../pages/Login'
 import Dashboard from '../../Dashboard'
-import { useState } from 'react'
-
+import { ProtectedRoute } from '../ProtectedRoute'
 function BusinessRouter(){
     
     const [cookies, setCokkie, removeCookie] = useCookies()
@@ -17,35 +16,14 @@ function BusinessRouter(){
         cookies.userInfo ? (
             <Dashboard>
                 <Routes>
-                    {
-                        cookies.rol === 'administrador' ? (
-                            <>
-                                <Route path='/' element = {<Home />}/>
-                                <Route path='/sales' element = {<Sales />}/>
-                                <Route path='/purchases' element = {<Purchases />}/>
-                                <Route path='/inventory' element = {<Inventory />}/>
-                            </>
-                        )
-                        : (
-                            <Route path='/' element = {<Home />}/>
-                        )
-                        
-                    }
-                    {
-                        cookies.rol === "vendedor" ? 
-                        (
-                            <>
-                                <Route path='/sales' element = {<Sales />}/>
-                                <Route path='/inventory' element = {<Inventory />}/>
-
-                            </>
-                        ):
-                        (
-                            <Route path='/' element = {<Home />}/>
-
-                        )
-                    }
-
+                    <Route path='/' element = {<Home />}/>
+                    <Route path='/sales' element = {<Sales />}/>
+                    <Route path='/purchases' element = {
+                        <ProtectedRoute user={cookies.rol}>
+                            <Purchases />
+                        </ProtectedRoute>
+                    }/>
+                    <Route path='/inventory' element = {<Inventory />}/>
                 </Routes>
                 
             </Dashboard>
