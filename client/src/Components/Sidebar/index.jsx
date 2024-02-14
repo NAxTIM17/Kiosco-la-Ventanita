@@ -25,6 +25,7 @@ function SideBar() {
   const {logged, setLogged} = useContext(LoginContext)
 
   const handleLogOut = () => {
+    sessionStorage.removeItem('isLogged')
     setLogged(false)
     removeCookie("userInfo");
     removeCookie("Token");

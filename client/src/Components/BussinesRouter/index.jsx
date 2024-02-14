@@ -14,11 +14,10 @@ import { LoginContext } from "../loginContext";
 
 function BusinessRouter() {
   const [cookies, setCokkie, removeCookie] = useCookies();
-  const { logged, setLogged } = useContext(LoginContext);
+  const isLogged = sessionStorage.getItem('isLogged')
 
-  console.log(logged);
 
-  return cookies.userInfo && logged ? (
+  return cookies.userInfo && isLogged ? (
     <Dashboard>
       <Routes>
         <Route path="/" element={<Home />} />
