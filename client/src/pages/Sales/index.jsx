@@ -55,12 +55,13 @@ function Sales() {
   const [titleAlert, setTitleAlert] = useState("");
   const [typeAlert, setTypeAlert] = useState(null);
 
+  const getProducts = async () => {
+    //productos get
+    const { data } = await axios.get("http://localhost:8000/productos");
+    setProductos(data);
+  };
+
   useEffect(() => {
-    const getProducts = async () => {
-      //productos get
-      const { data } = await axios.get("http://localhost:8000/productos");
-      setProductos(data);
-    };
     getProducts();
   }, []);
   const AgregarCarrito = () => {
@@ -147,6 +148,8 @@ function Sales() {
             setTitleAlert(response.data.message);
             setTypeAlert(true);
             LimpiarTodaLaTable();
+            setItem(null)
+            getProducts();
           } else {
             setSaleState(true);
             setTitleAlert(response.data.message);
@@ -195,7 +198,7 @@ function Sales() {
             <CardAutoComplete
               setItem={setItem}
               item={item}
-              products={productos}
+              products={productos.filter(product => product.cantidad !== 0)}
               filterText={filterText}
             />
             <Button

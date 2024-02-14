@@ -4,13 +4,11 @@ import { useCookies } from "react-cookie";
 import Home from "../../pages/Home";
 import Sales from "../../pages/Sales";
 import Inventory from "../../pages/Inventory";
-import Purchases from "../../pages/Purchases";
+//import Purchases from "../../pages/Purchases";
 import Login from "../../pages/Login";
+import Stock  from "../../pages/Stock";
 import Dashboard from "../../Dashboard";
 import { ProtectedRoute } from "../ProtectedRoute";
-import { useContext } from "react";
-import { LoginContextProvider } from "../loginContext";
-import { LoginContext } from "../loginContext";
 
 function BusinessRouter() {
   const [cookies, setCokkie, removeCookie] = useCookies();
@@ -23,14 +21,15 @@ function BusinessRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/sales" element={<Sales />} />
         <Route
-          path="/purchases"
+          path="/stock"
           element={
             <ProtectedRoute user={cookies.rol}>
-              <Purchases />
+              <Stock />
             </ProtectedRoute>
           }
         />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/stock" element={<Stock/>} />
       </Routes>
     </Dashboard>
   ) : (

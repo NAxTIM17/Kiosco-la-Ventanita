@@ -5,28 +5,20 @@ import { useCookies } from "react-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShop,
-  faHouse,
-  faCartShopping,
-  faBoxOpen,
   faArrowRightFromBracket,
-  faStore,
 } from "@fortawesome/free-solid-svg-icons";
 import { MyButton } from "../MyButton/Index";
 import { Modals } from "../Modal";
 import { useDisclosure } from "@nextui-org/react";
-import { useContext } from "react";
-import { LoginContext } from "../loginContext";
 
 function SideBar() {
   const navigate = useNavigate();
 
   const [cookies, setCookie, removeCookie] = useCookies();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {logged, setLogged} = useContext(LoginContext)
 
   const handleLogOut = () => {
     sessionStorage.removeItem('isLogged')
-    setLogged(false)
     removeCookie("userInfo");
     removeCookie("Token");
     removeCookie("rol");
@@ -57,9 +49,9 @@ function SideBar() {
                   }}
                 ></MyButton>
                 <MyButton
-                  name={"Compras"}
+                  name={"Agregar Stock"}
                   onClick={() => {
-                    navigate("/purchases");
+                    navigate("/stock");
                   }}
                 ></MyButton>
                 <MyButton

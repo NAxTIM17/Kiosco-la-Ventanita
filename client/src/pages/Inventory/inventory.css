@@ -22,9 +22,20 @@
     flex-direction: row;
     padding: 10px;
     height: 40rem;
+    gap: 1rem;
     border-radius: 15px;
-    overflow: hidden;
+}
+.container-table h1{
+    font-weight: 500;
 }
 .table{
     display: flex;
+}
+.stock-container{
+    display: flex;
+    flex-direction: column;
+}
+.stock{
+    overflow: scroll;
+    overflow-x: hidden;
 }

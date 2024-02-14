@@ -26,11 +26,13 @@ const columns = [
 function Inventory() {
   const [filterText, setFilterText] = useState("");
   const [productos, setProductos] = useState([]);
+  const [outStock, setOutStock] = useState([])
 
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await axios.get("http://localhost:8000/productos");
-      setProductos(data);
+      setProductos(data.filter(product => product.cantidad !== 0));
+      setOutStock(data.filter(product => product.cantidad === 0));
     };
     getProducts();
   }, []);
@@ -51,7 +53,18 @@ function Inventory() {
             />
           </div>
           <div className="container-table">
-            <TableProducts className="table" Columns={columns} Items={filter} />
+            <div className="stock-container">
+              <h1>STOCK</h1>
+              <div className="stock">
+                <TableProducts className="table" Columns={columns} Items={filter} />
+              </div>
+            </div>
+            <div>
+              <h1>SIN STOCK</h1>
+              <div className="stock">
+                <TableProducts className="table-outStock" Columns={columns} Items={outStock} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
